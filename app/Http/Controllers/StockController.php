@@ -10,25 +10,28 @@ class StockController extends Controller
 {
     public function index()
     {
+        $page = request()->query('page', 1);
+
         $url = config('services.api.url') . '/stock/all';
-        $response = Http::api()->get($url)->json();
+        $response = Http::api()->get($url, [
+            'page' => $page
+        ])->json();
 
         $vehicles = $response['data'];
-        $pagination = $response;
 
         $paginator = new LengthAwarePaginator(
             $vehicles,
-            $response['total'],        // total items
-            $response['per_page'],     // per page
-            $response['current_page'], // current page
-            ['path' => $response['path']]
+            $response['total'],
+            $response['per_page'],
+            $response['current_page'],
+            ['path' => request()->url()] // <-- FIX
         );
 
         $url = config('services.api.url') . '/stock/filterOptions';
         $filterOptions = Http::api()->get($url)->json();
 
         $totalvehicles = count($vehicles);
-        $msg = $totalvehicles > 0 ? false : true;
+        $msg = $totalvehicles === 0;
 
         return view('stock', compact('paginator', 'filterOptions', 'totalvehicles', 'msg'));
     }
