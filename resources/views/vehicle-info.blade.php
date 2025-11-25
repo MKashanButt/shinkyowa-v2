@@ -140,8 +140,8 @@
                                 <p>FOB Price</p>
                             </div>
                             <div class="row">
-                                @if ($vehicle['fob'] == 'Inquiry')
-                                    <p>{{ $vehicle['fob'] }}</p>
+                                @if ($vehicle['fob'] == 0)
+                                    <p>Inquire</p>
                                 @else
                                     <p>{{ $vehicle['currency']['symbol'] . number_format($vehicle['fob']) }}</p>
                                 @endif
