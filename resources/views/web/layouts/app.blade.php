@@ -47,7 +47,7 @@
                         <p>Email : <span>info@shinkyowa.com</span></p>
                     </div>
                     <div class="item">
-                        <p>Phone : <span>+81 70-1524-1308, +81 90-3049-1308</span></p>
+                        <p>Phone : <span>+81 70-1524-1308, +81 70-7427-0468</span></p>
                     </div>
                     <div class="item">
                         <p>Total Stock : <span>{{ $total }}</span></p>
