@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ClientDashboardController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\CustomerAccountController;
@@ -46,6 +47,12 @@ Route::view('/services/shipping', 'shipping');
 Route::view('/about-us/company-profile', 'company-profile');
 Route::view('/about-us/why-choose-us', 'why-choose-us');
 Route::view('/sales-and-bank-details', 'bank-details');
+
+Route::prefix('client')
+    ->middleware('customerRoleCheck')
+    ->group(function () {
+        Route::get('/', [ClientDashboardController::class, 'index'])->name('client.dashboard');
+    });
 
 Route::middleware(['auth', 'customerRoleCheck'])
     ->prefix('admin')
