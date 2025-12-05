@@ -29,10 +29,9 @@ class CheckCustomerRoleMiddleware
 
             // If the current route isn't already the customer's page, redirect
             if (
-                $request->route()->getName() !== 'customer-account.show'
-                || $request->route()->parameter('customer_account')->id != $accountId
+                $request->route()->getName() !== 'client.dashboard'
             ) {
-                return redirect()->route('customer-account.show', $accountId);
+                return redirect()->route('client.dashboard', $accountId);
             }
         }
 
