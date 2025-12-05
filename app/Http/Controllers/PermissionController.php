@@ -15,14 +15,14 @@ class PermissionController extends Controller
         $permissions = Permission::with('role')
             ->paginate(8);
 
-        return view('permission.index', compact('permissions'));
+        return view('admin.permission.index', compact('permissions'));
     }
 
     public function create()
     {
         $roles = Role::pluck('name', 'id');
 
-        return view('permission.create', compact('roles'));
+        return view('admin.permission.create', compact('roles'));
     }
 
     public function store(StorePermissionRequest $request)
@@ -36,7 +36,7 @@ class PermissionController extends Controller
 
         $permission->role()->attach($validated['role_id']);
 
-        return redirect()->route('permission.index')
+        return redirect()->route('admin.permission.index')
             ->with('success', 'Permission created successfully!');
     }
 
@@ -45,7 +45,7 @@ class PermissionController extends Controller
         $roles = Role::pluck('name', 'id');
         $permission['name'] = str_replace('_', ' ', $permission->name);
 
-        return view('permission.edit', compact('permission', 'roles'));
+        return view('admin.permission.edit', compact('permission', 'roles'));
     }
 
     public function update(UpdatePermissionRequest $request, Permission $permission)
@@ -59,7 +59,7 @@ class PermissionController extends Controller
 
         $permission->role()->sync($validated['role_id']);
 
-        return redirect()->route('permission.index')
+        return redirect()->route('admin.permission.index')
             ->with('success', 'Permission updated successfully!');
     }
 
@@ -67,7 +67,7 @@ class PermissionController extends Controller
     {
         $permission->delete();
 
-        return redirect()->route('permission.index')
+        return redirect()->route('admin.permission.index')
             ->with('success', 'Permission deleted successfully!');
     }
 }

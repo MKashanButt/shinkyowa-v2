@@ -24,6 +24,6 @@ class PendingTTController extends Controller
             })
             ->paginate(8);
 
-        return view('pending-tt.index', compact('payments'));
+        return view('admin.pending-tt.index', compact('payments'));
     }
 }

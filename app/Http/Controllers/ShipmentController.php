@@ -16,14 +16,14 @@ class ShipmentController extends Controller
         $shipments = Shipment::with('stock')
             ->paginate(8);
 
-        return view('shipment.index', compact('shipments'));
+        return view('admin.shipment.index', compact('shipments'));
     }
 
     public function create()
     {
         $stocks = Stock::pluck('id', 'sid');
 
-        return view('shipment.create', compact('stocks'));
+        return view('admin.shipment.create', compact('stocks'));
     }
 
     public function store(StoreShipmentRequest $request)
@@ -38,7 +38,7 @@ class ShipmentController extends Controller
 
         $shipment->stock()->attach($validated['stock_id']);
 
-        return redirect()->route('shipment.index')
+        return redirect()->route('admin.shipment.index')
             ->with('success', 'Shipment created successfully!');
     }
 
@@ -46,7 +46,7 @@ class ShipmentController extends Controller
     {
         $stocks = Stock::pluck('id', 'sid');
 
-        return view('shipment.edit', compact('shipment', 'stocks'));
+        return view('admin.shipment.edit', compact('shipment', 'stocks'));
     }
 
     public function update(UpdateShipmentRequest $request, Shipment $shipment)
@@ -63,7 +63,7 @@ class ShipmentController extends Controller
             $shipment->stock()->sync($validated['stock_id']);
         }
 
-        return redirect()->route('shipment.index')
+        return redirect()->route('admin.shipment.index')
             ->with('success', 'Shipment updated successfully!');
     }
 
@@ -77,7 +77,7 @@ class ShipmentController extends Controller
 
         $shipment->delete();
 
-        return redirect()->route('shipment.index')
+        return redirect()->route('admin.shipment.index')
             ->with('success', 'Shipment deleted successfully');
     }
 }

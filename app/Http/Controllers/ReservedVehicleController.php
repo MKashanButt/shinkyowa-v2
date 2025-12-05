@@ -31,7 +31,7 @@ class ReservedVehicleController extends Controller
             })
             ->paginate(8);
 
-        return view('reserved-vehicle.index', compact('stocks'));
+        return view('admin.reserved-vehicle.index', compact('stocks'));
     }
 
     public function create()
@@ -54,7 +54,7 @@ class ReservedVehicleController extends Controller
             })
             ->pluck('name', 'id');
 
-        return view('reserved-vehicle.create', compact('stocks', 'customerAccounts'));
+        return view('admin.reserved-vehicle.create', compact('stocks', 'customerAccounts'));
     }
 
     public function store(StoreReservedVehicleRequest $request)
@@ -68,7 +68,7 @@ class ReservedVehicleController extends Controller
                     'cnf' => $validated['cnf']
                 ]);
 
-            return redirect()->route('reserved-vehicle.index')
+            return redirect()->route('admin.reserved-vehicle.index')
                 ->with('success', 'Vehicle reserved successfully.');
         } catch (\Exception $e) {
             return redirect()
@@ -97,7 +97,7 @@ class ReservedVehicleController extends Controller
             })
             ->get(['cnf', 'name', 'id']);
 
-        return view('reserved-vehicle.edit', compact(
+        return view('admin.reserved-vehicle.edit', compact(
             'reserved',
             'stocks',
             'customerAccounts'
@@ -115,7 +115,7 @@ class ReservedVehicleController extends Controller
                     'cnf' => $validated['cnf']
                 ]);
 
-            return redirect()->route('reserved-vehicle.index')
+            return redirect()->route('admin.reserved-vehicle.index')
                 ->with('success', 'Vehicle reservation updated successfully.');
         } catch (\Exception $e) {
             return redirect()
@@ -130,7 +130,7 @@ class ReservedVehicleController extends Controller
             Stock::where('id', $reserved)
                 ->update(['customer_account_id' => null, 'cnf' => 0]);
 
-            return redirect()->route('reserved-vehicle.index')
+            return redirect()->route('admin.reserved-vehicle.index')
                 ->with('success', 'Vehicle reservation cancelled successfully.');
         } catch (\Exception $e) {
             return redirect()

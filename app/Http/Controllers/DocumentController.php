@@ -17,14 +17,14 @@ class DocumentController extends Controller
         $documents = Document::with('stock')
             ->paginate(8);
 
-        return view('document.index', compact('documents'));
+        return view('admin.document.index', compact('documents'));
     }
 
     public function create()
     {
         $stocks = Stock::pluck('id', 'sid');
 
-        return view('document.create', compact('stocks'));
+        return view('admin.document.create', compact('stocks'));
     }
 
     public function store(StoreDocumentRequest $request)
@@ -49,7 +49,7 @@ class DocumentController extends Controller
 
         Document::create($validated);
 
-        return redirect()->route('document.index')
+        return redirect()->route('admin.document.index')
             ->with('success', 'Documents uploaded successfully.');
     }
 
@@ -57,7 +57,7 @@ class DocumentController extends Controller
     {
         $stocks = Stock::pluck('id', 'sid');
 
-        return view('document.edit', compact('document', 'stocks'));
+        return view('admin.document.edit', compact('document', 'stocks'));
     }
 
     public function update(UpdateDocumentRequest $request, Document $document)
@@ -75,7 +75,7 @@ class DocumentController extends Controller
 
         $document->update($validated);
 
-        return redirect()->route('document.index')
+        return redirect()->route('admin.document.index')
             ->with('success', 'Documents updated successfully.');
     }
 
@@ -101,7 +101,7 @@ class DocumentController extends Controller
             }
         }
 
-        return redirect()->route('document.index')
+        return redirect()->route('admin.document.index')
             ->with('success', 'Document and all associated files deleted successfully.');
     }
 }

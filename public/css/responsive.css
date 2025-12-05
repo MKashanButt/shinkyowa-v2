@@ -1,0 +1,409 @@
+@media (min-width: 1301px) {}
+
+@media (min-width: 1008px) and (max-width: 1300px) {
+    h1 {
+        font-size: 15px;
+    }
+
+    h2 {
+        font-size: 15px !important;
+    }
+
+    h3 {
+        font-size: 13px !important;
+    }
+
+    h4 {
+        font-size: 12px !important;
+    }
+
+    p,
+    li,
+    button,
+    label,
+    select,
+    input,
+    th,
+    tr,
+    span {
+        font-size: 12px !important;
+    }
+
+    header i {
+        font-size: 12px;
+    }
+
+    .pageContent .sub-content .filter select {
+        width: 22% !important;
+    }
+
+    .whatsapp {
+        font-size: 30px !important;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 1007px) {
+    .hamburger {
+        display: block !important;
+        display: flex !important;
+    }
+
+    h1 {
+        font-size: 15px;
+    }
+
+    h2 {
+        font-size: 15px !important;
+    }
+
+    h3 {
+        font-size: 13px !important;
+    }
+
+    h4 {
+        font-size: 12px !important;
+    }
+
+    p,
+    li,
+    button,
+    label,
+    select,
+    input,
+    th,
+    tr,
+    span,
+    textarea {
+        font-size: 8px !important;
+    }
+
+    header i {
+        font-size: 12px !important;
+    }
+
+    header .info .item:nth-of-type(3),
+    header .time,
+    .vehicle-of-day,
+    .offers,
+    .second-sidebar hr,
+    .main-sidebar .search,
+    footer .item:nth-of-type(2) {
+        display: none !important;
+    }
+
+    header .info .item {
+        display: flex;
+        align-items: center;
+    }
+
+    #slider {
+        height: 120px !important;
+    }
+
+    .content,
+    .pageContent {
+        flex-direction: column;
+    }
+
+    .pageContent .sub-content .filter select {
+        width: 22% !important;
+    }
+
+    header .main-header .search {
+        padding-right: 2rem;
+    }
+
+    header .main-header .search form {
+        width: 70% !important;
+        height: 24px !important;
+    }
+
+    header nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0 !important;
+        /* display: none !important; */
+    }
+
+    .second-sidebar,
+    .pageContent,
+    .sub-content {
+        width: 100% !important;
+    }
+
+    .second-sidebar {
+        margin-top: 5rem;
+    }
+
+    .main-sidebar {
+        width: 100%;
+    }
+
+    .make ul,
+    .type ul,
+    .region ul {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    dialog .message>button {
+        padding: 0.1rem !important;
+    }
+
+    dialog .message form input,
+    dialog .message form textarea {
+        padding: 0.2rem 5px !important;
+    }
+
+    dialog .message form textarea {
+        height: 70px;
+    }
+
+    dialog .message {
+        padding: 0.5rem 1rem !important;
+    }
+
+    dialog .message form button {
+        padding: 3px 0 !important;
+    }
+
+    footer .container:nth-of-type(2) {
+        flex-direction: column !important;
+    }
+
+    .testimonials .stage {
+        display: flex;
+        gap: 10px;
+    }
+
+    .sub-content .stage {
+        flex-direction: column;
+    }
+
+    .sub-content .stage .item img {
+        margin-top: 0 !important;
+    }
+
+    .sub-content .stage .item .stage {
+        flex-direction: row;
+    }
+
+    .sub-content .stage .item {
+        width: 100% !important;
+    }
+
+    .customer-testimonials .item img {
+        height: 110px !important;
+    }
+
+    .whatsapp {
+        font-size: 20px !important;
+    }
+}
+
+@media (min-width: 360px) and (max-width: 640px) {
+    .hamburger {
+        display: block !important;
+        display: flex !important;
+    }
+
+    h1 {
+        font-size: 12px;
+    }
+
+    h2 {
+        font-size: 10px !important;
+    }
+
+    h3 {
+        font-size: 8px !important;
+    }
+
+    h4 {
+        font-size: 6px !important;
+    }
+
+    p,
+    li,
+    button,
+    label,
+    select,
+    input,
+    th,
+    tr,
+    span,
+    textarea {
+        font-size: 5px !important;
+    }
+
+    header i {
+        font-size: 12px !important;
+    }
+
+    header .info .item:nth-of-type(3),
+    header .time,
+    .vehicle-of-day,
+    .offers,
+    .second-sidebar hr,
+    .main-sidebar .search,
+    footer .item:nth-of-type(2) {
+        display: none !important;
+    }
+
+    header .info .item {
+        display: flex;
+        align-items: center;
+    }
+
+    #slider {
+        height: 80px !important;
+    }
+
+    .content,
+    .pageContent {
+        flex-direction: column;
+    }
+
+    .pageContent .sub-content .filter select {
+        max-height: 17px;
+        width: 20% !important;
+    }
+
+    header .main-header .search {
+        padding-right: 2rem;
+    }
+
+    header .main-header .search form {
+        width: 70% !important;
+        height: 24px !important;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 0 !important;
+    }
+
+    .main-sidebar .make li img {
+        max-width: 22px;
+    }
+
+    .main-sidebar .type li img {
+        max-width: 36px;
+        max-height: 13px;
+    }
+
+    .main-sidebar .region li img {
+        max-width: 36px;
+        max-height: 16px;
+    }
+
+    header .main-header .options .item p {
+        align-items: center;
+    }
+
+    .second-sidebar,
+    .pageContent,
+    .sub-content {
+        width: 100% !important;
+    }
+
+    .second-sidebar {
+        margin-top: 5rem;
+    }
+
+    .main-sidebar {
+        width: 100%;
+    }
+
+    .make ul,
+    .type ul,
+    .region ul {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    dialog .message>button {
+        padding: 0.1rem !important;
+    }
+
+    dialog .message form input,
+    dialog .message form textarea {
+        padding: 0.2rem 5px !important;
+    }
+
+    dialog .message form textarea {
+        height: 70px;
+    }
+
+    dialog .message {
+        padding: 0.1rem 0.5rem !important;
+    }
+
+    dialog .message form label {
+        margin: 0.3rem 0 0.1rem !important;
+    }
+
+    dialog .message form button {
+        margin-top: 0.1rem !important;
+        padding: 3px 0 !important;
+    }
+
+    footer .container:nth-of-type(2) {
+        display: flex;
+        flex-direction: column !important;
+    }
+
+    .mySwiper2 {
+        width: 100%;
+        height: 200px !important;
+    }
+
+    .testimonials .stage {
+        display: flex;
+        gap: 10px;
+    }
+
+    .sub-content .stage {
+        flex-direction: column;
+    }
+
+    .sub-content .stage .item img {
+        margin-top: 0 !important;
+    }
+
+    .sub-content .stage .item .stage {
+        flex-direction: row;
+    }
+
+    .sub-content .stage .item {
+        width: 100% !important;
+    }
+
+    .customer-testimonials .item img {
+        height: 60px !important;
+    }
+
+    .sub-content table td {
+        max-width: 250px;
+    }
+
+    footer .container .item:nth-of-type(1) {
+        max-width: 37%;
+    }
+
+    footer p {
+        text-wrap: wrap !important;
+    }
+
+    footer .container {
+        gap: 20px !important;
+    }
+
+    .whatsapp {
+        font-size: 20px !important;
+        padding: 0px !important;
+    }
+}

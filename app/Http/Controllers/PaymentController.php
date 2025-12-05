@@ -29,7 +29,7 @@ class PaymentController extends Controller
             })
             ->paginate(8);
 
-        return view('payment.index', compact('payments'));
+        return view('admin.payment.index', compact('payments'));
     }
 
     public function create()
@@ -51,7 +51,7 @@ class PaymentController extends Controller
             ->pluck('name', 'id');
         $stocks = Stock::pluck('sid', 'id');
 
-        return view('payment.create', compact('customerAccounts', 'stocks'));
+        return view('admin.payment.create', compact('customerAccounts', 'stocks'));
     }
 
     public function store(StorePaymentRequest $request)
@@ -73,7 +73,7 @@ class PaymentController extends Controller
 
         Payment::create($validated);
 
-        return redirect()->route('payment.index')
+        return redirect()->route('admin.payment.index')
             ->with('success', 'Payment created successfully.');
     }
 
@@ -96,7 +96,7 @@ class PaymentController extends Controller
             ->pluck('name', 'id');
         $stocks = Stock::pluck('sid', 'id');
 
-        return view('payment.edit', compact('payment', 'customerAccounts', 'stocks'));
+        return view('admin.payment.edit', compact('payment', 'customerAccounts', 'stocks'));
     }
 
     public function update(UpdatePaymentRequest $request, Payment $payment)
@@ -114,7 +114,7 @@ class PaymentController extends Controller
 
         $payment->update($validated);
 
-        return redirect()->route('payment.index')
+        return redirect()->route('admin.payment.index')
             ->with('success', 'Payment updated successfully.');
     }
 
@@ -131,7 +131,7 @@ class PaymentController extends Controller
 
             $payment->delete();
 
-            return redirect()->route('payment.index')
+            return redirect()->route('admin.payment.index')
                 ->with('success', 'Payment deleted successfully.');
         } catch (\Exception $e) {
             return back()->with('error', 'Error deleting payment: ' . $e->getMessage());

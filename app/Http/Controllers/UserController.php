@@ -23,7 +23,7 @@ class UserController extends Controller
             ->orderBy('id', 'DESC')
             ->paginate(8);
 
-        return view('user.index', compact('users'));
+        return view('admin.user.index', compact('users'));
     }
 
     public function create()
@@ -33,7 +33,7 @@ class UserController extends Controller
             $q->where('name', 'manager');
         })->pluck('name', 'id');
 
-        return view('user.create', compact('roles', 'managers'));
+        return view('admin.user.create', compact('roles', 'managers'));
     }
 
     public function store(StoreUserRequest $request)
@@ -43,7 +43,7 @@ class UserController extends Controller
 
         User::create($validated);
 
-        return redirect()->route('user.index')->with('success', 'User created successfully.');
+        return redirect()->route('admin.user.index')->with('success', 'User created successfully.');
     }
 
     public function edit(User $user)
@@ -53,7 +53,7 @@ class UserController extends Controller
             $q->where('name', 'manager');
         })->pluck('name', 'id');
 
-        return view('user.edit', compact('user', 'roles', 'managers'));
+        return view('admin.user.edit', compact('user', 'roles', 'managers'));
     }
 
     public function update(UpdateUserRequest $request, User $user)
@@ -67,13 +67,13 @@ class UserController extends Controller
 
         $user->update($validated);
 
-        return redirect()->route('user.index')->with('success', 'User updated successfully.');
+        return redirect()->route('admin.user.index')->with('success', 'User updated successfully.');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
 
-        return redirect()->route('user.index')->with('success', 'User deleted successfully.');
+        return redirect()->route('admin.user.index')->with('success', 'User deleted successfully.');
     }
 }

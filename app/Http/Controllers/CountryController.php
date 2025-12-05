@@ -13,12 +13,12 @@ class CountryController extends Controller
     {
         $countries = Country::withCount('stock')
             ->paginate(8);
-        return view("country.index", compact('countries'));
+        return view("admin.country.index", compact('countries'));
     }
 
     public function create()
     {
-        return view('country.create');
+        return view('admin.country.create');
     }
 
     public function store(StoreCountryRequest $request)
@@ -27,13 +27,13 @@ class CountryController extends Controller
 
         Country::create($validated);
 
-        return redirect()->route('country.index')
+        return redirect()->route('admin.country.index')
             ->with('success', 'Country created successfully.');
     }
 
     public function edit(Country $country)
     {
-        return view('country.edit', compact('country'));
+        return view('admin.country.edit', compact('country'));
     }
 
     public function update(UpdateCountryRequest $request, Country $country)
@@ -42,7 +42,7 @@ class CountryController extends Controller
 
         $country->update($validated);
 
-        return redirect()->route('country.index')
+        return redirect()->route('admin.country.index')
             ->with('success', 'Country updated successfully.');
     }
 

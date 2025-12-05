@@ -14,12 +14,12 @@ class CategoryController extends Controller
     {
         $categories = Category::withCount('stock')
             ->paginate(8);
-        return view("category.index", compact('categories'));
+        return view("admin.category.index", compact('categories'));
     }
 
     public function create()
     {
-        return view('category.create');
+        return view('admin.category.create');
     }
 
     public function store(StoreCategoryRequest $request)
@@ -28,13 +28,13 @@ class CategoryController extends Controller
 
         Category::create($validated);
 
-        return redirect()->route('category.index')
+        return redirect()->route('admin.category.index')
             ->with('success', 'Category created successfully.');
     }
 
     public function edit(Category $category)
     {
-        return view('category.edit', compact('category'));
+        return view('admin.category.edit', compact('category'));
     }
 
     public function update(UpdateCategoryRequest $request, Category $category)
@@ -43,7 +43,7 @@ class CategoryController extends Controller
 
         $category->update($validated);
 
-        return redirect()->route('category.index')
+        return redirect()->route('admin.category.index')
             ->with('success', 'Category updated successfully.');
     }
 

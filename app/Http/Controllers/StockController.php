@@ -23,7 +23,7 @@ class StockController extends Controller
     {
         $stocks = Stock::with(['make', 'currency', 'customerAccount', 'agent'])->paginate(8);
 
-        return view('stock.index', compact('stocks'));
+        return view('admin.stock.index', compact('stocks'));
     }
 
     /**
@@ -38,7 +38,7 @@ class StockController extends Controller
         $bodyType = BodyType::all();
 
         return view(
-            'stock.create',
+            'admin.stock.create',
             compact(
                 'makes',
                 'currencies',
@@ -79,7 +79,7 @@ class StockController extends Controller
 
         Stock::create($validated);
 
-        return redirect()->route('stock.index')->with('success', 'Vehicle added successfully!');
+        return redirect()->route('admin.stock.index')->with('success', 'Vehicle added successfully!');
     }
 
     /**
@@ -90,7 +90,7 @@ class StockController extends Controller
         $stock = Stock::with(['make', 'currency', 'country', 'bodyType', 'category'])
             ->findOrFail($stock['id']);
 
-        return view('stock.show', compact('stock'));
+        return view('admin.stock.show', compact('stock'));
     }
 
     /**
@@ -104,7 +104,7 @@ class StockController extends Controller
         $countries = Country::all();
         $bodyType = BodyType::all();
 
-        return view('stock.edit', compact(
+        return view('admin.stock.edit', compact(
             'stock',
             'makes',
             'currencies',
@@ -154,7 +154,7 @@ class StockController extends Controller
 
         $stock->update($request->except(['thumbnail', 'images', 'remove_thumbnail', 'remove_images']));
 
-        return redirect()->route('stock.index')->with('success', 'Stock updated successfully');
+        return redirect()->route('admin.stock.index')->with('success', 'Stock updated successfully');
     }
 
     public function search(Request $request)
@@ -170,7 +170,7 @@ class StockController extends Controller
             ->orWhere('chassis', 'LIKE', "%{$search}%")
             ->paginate(8);
 
-        return view('stock.index', compact('stocks', 'search'));
+        return view('admin.stock.index', compact('stocks', 'search'));
     }
 
     public function destroy($id)
@@ -182,7 +182,7 @@ class StockController extends Controller
         $stock = Stock::find($id);
 
         if (!$stock) {
-            return redirect()->route('stock.index')
+            return redirect()->route('admin.stock.index')
                 ->with('error', 'Vehicle not found!');
         }
 
@@ -203,7 +203,7 @@ class StockController extends Controller
 
             $stock->delete();
 
-            return redirect()->route('stock.index')
+            return redirect()->route('admin.stock.index')
                 ->with('success', 'Vehicle deleted successfully!');
         } catch (\Exception $e) {
             Log::error('Deletion failed: ' . $e->getMessage());

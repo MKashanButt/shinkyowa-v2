@@ -14,12 +14,12 @@ class MakeController extends Controller
     {
         $makes = Make::withCount('stock')
             ->paginate(8);
-        return view("make.index", compact('makes'));
+        return view("admin.make.index", compact('makes'));
     }
 
     public function create()
     {
-        return view('make.create');
+        return view('admin.make.create');
     }
 
     public function store(StoreMakeRequest $request)
@@ -34,7 +34,7 @@ class MakeController extends Controller
 
         Make::create($validated);
 
-        return redirect()->route('make.index')
+        return redirect()->route('admin.make.index')
             ->with('success', 'Make created successfully.');
     }
 
@@ -59,7 +59,7 @@ class MakeController extends Controller
 
         $make->update($validated);
 
-        return redirect()->route('make.index')
+        return redirect()->route('admin.make.index')
             ->with('success', 'Make updated successfully.');
     }
 

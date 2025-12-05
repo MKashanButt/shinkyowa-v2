@@ -11,7 +11,7 @@ class InquiryController extends Controller
     {
         $inquiries = Inquiry::with('country')
             ->paginate(8);
-        return view("inquiry.index", compact('inquiries'));
+        return view("admin.inquiry.index", compact('inquiries'));
     }
 
     public function show(Inquiry $inquiry)
@@ -19,7 +19,7 @@ class InquiryController extends Controller
         $previous = Inquiry::where('id', '<', $inquiry->id)->max('id');
         $next = Inquiry::where('id', '>', $inquiry->id)->min('id');
 
-        return view('inquiry.show', [
+        return view('admin.inquiry.show', [
             'inquiry' => $inquiry,
             'previousId' => $previous,
             'nextId' => $next,

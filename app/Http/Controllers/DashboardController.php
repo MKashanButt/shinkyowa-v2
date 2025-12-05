@@ -76,6 +76,6 @@ class DashboardController extends Controller
             ->get();
 
 
-        return view('dashboard', compact('accounts', 'payments', 'pendingTT'));
+        return view('admin.dashboard', compact('accounts', 'payments', 'pendingTT'));
     }
 }

@@ -13,11 +13,11 @@ class CurrencyController extends Controller
     {
         $currencies = Currency::withCount('stock')
             ->paginate(8);
-        return view("currency.index", compact('currencies'));
+        return view("admin.currency.index", compact('currencies'));
     }
     public function create()
     {
-        return view('currency.create');
+        return view('admin.currency.create');
     }
 
     public function store(StoreCurrencyRequest $request)
@@ -26,13 +26,13 @@ class CurrencyController extends Controller
 
         Currency::create($validated);
 
-        return redirect()->route('currency.index')
+        return redirect()->route('admin.currency.index')
             ->with('success', 'Currency created successfully.');
     }
 
     public function edit(Currency $currency)
     {
-        return view('currency.edit', compact('currency'));
+        return view('admin.currency.edit', compact('currency'));
     }
 
     public function update(UpdateCurrencyRequest $request, Currency $currency)
@@ -41,7 +41,7 @@ class CurrencyController extends Controller
 
         $currency->update($validated);
 
-        return redirect()->route('currency.index')
+        return redirect()->route('admin.currency.index')
             ->with('success', 'Currency updated successfully.');
     }
 

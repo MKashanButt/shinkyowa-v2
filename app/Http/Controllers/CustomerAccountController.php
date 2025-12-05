@@ -39,7 +39,7 @@ class CustomerAccountController extends Controller
             ->orderBy('id', 'DESC')
             ->paginate(10);
 
-        return view('customer-account.index', compact('accounts'));
+        return view('admin.customer-account.index', compact('accounts'));
     }
 
     public function create()
@@ -60,7 +60,7 @@ class CustomerAccountController extends Controller
         $customerIdLatest = CustomerAccount::latest()->value('cid');
         $customerId = $customerIdLatest ? $customerIdLatest + 1 : 1;
 
-        return view('customer-account.create', compact(
+        return view('admin.customer-account.create', compact(
             'countries',
             'customerId',
             'overallUsers',
@@ -102,7 +102,7 @@ class CustomerAccountController extends Controller
             'type'    => 'success',
         ]);
 
-        return redirect()->route('customer-account.index')
+        return redirect()->route('admin.customer-account.index')
             ->with('success', 'Customer account created successfully.');
     }
 
@@ -143,7 +143,7 @@ class CustomerAccountController extends Controller
         $customerAccount->payment_count = $customerAccount->payment->count();
         $customerAccount->reserved_stock_count = $customerAccount->stock->count();
 
-        return view('customer-account.show', compact('customerAccount'));
+        return view('admin.customer-account.show', compact('customerAccount'));
     }
 
     public function edit(CustomerAccount $customerAccount)
@@ -162,7 +162,7 @@ class CustomerAccountController extends Controller
 
         $currencies = Currency::pluck('code', 'id');
 
-        return view('customer-account.edit', compact(
+        return view('admin.customer-account.edit', compact(
             'customerAccount',
             'countries',
             'overallUsers',
@@ -208,7 +208,7 @@ class CustomerAccountController extends Controller
             'type'    => 'success',
         ]);
 
-        return redirect()->route('customer-account.index')
+        return redirect()->route('admin.customer-account.index')
             ->with('success', 'Customer account updated successfully.');
     }
 
@@ -220,9 +220,9 @@ class CustomerAccountController extends Controller
             ->first();
 
         if ($customerAccount) {
-            return redirect()->route('customer-account.show', $customerAccount->id);
+            return redirect()->route('admin.customer-account.show', $customerAccount->id);
         } else {
-            return redirect()->route('customer-account.index')
+            return redirect()->route('admin.customer-account.index')
                 ->with('error', 'Customer account not found.');
         }
     }
@@ -235,9 +235,9 @@ class CustomerAccountController extends Controller
             ->first();
 
         if ($customerAccount) {
-            return redirect()->route('customer-account.show', $customerAccount->id);
+            return redirect()->route('admin.customer-account.show', $customerAccount->id);
         } else {
-            return redirect()->route('customer-account.index')
+            return redirect()->route('admin.customer-account.index')
                 ->with('error', 'No customer accounts found for the specified company.');
         }
     }
@@ -264,7 +264,7 @@ class CustomerAccountController extends Controller
             'type'    => 'danger',
         ]);
 
-        return redirect()->route('customer-account.index')
+        return redirect()->route('admin.customer-account.index')
             ->with('success', 'Customer account deleted successfully.');
     }
 }
