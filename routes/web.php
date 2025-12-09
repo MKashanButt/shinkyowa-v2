@@ -43,10 +43,10 @@ Route::controller(WebStockPageController::class)->group(function () {
     Route::get('/remove-year', 'yearRemove');
 });
 
-Route::view('/services/shipping', 'shipping');
-Route::view('/about-us/company-profile', 'company-profile');
-Route::view('/about-us/why-choose-us', 'why-choose-us');
-Route::view('/sales-and-bank-details', 'bank-details');
+Route::view('/services/shipping', 'web.shipping');
+Route::view('/about-us/company-profile', 'web.company-profile');
+Route::view('/about-us/why-choose-us', 'web.why-choose-us');
+Route::view('/sales-and-bank-details', 'web.bank-details');
 
 Route::prefix('client')
     ->middleware('customerRoleCheck')
