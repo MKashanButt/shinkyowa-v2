@@ -68,7 +68,7 @@ class ReservedVehicleController extends Controller
                     'cnf' => $validated['cnf']
                 ]);
 
-            return redirect()->route('admin.reserved-vehicle.index')
+            return redirect()->route('reserved-vehicle.index')
                 ->with('success', 'Vehicle reserved successfully.');
         } catch (\Exception $e) {
             return redirect()
@@ -115,7 +115,7 @@ class ReservedVehicleController extends Controller
                     'cnf' => $validated['cnf']
                 ]);
 
-            return redirect()->route('admin.reserved-vehicle.index')
+            return redirect()->route('reserved-vehicle.index')
                 ->with('success', 'Vehicle reservation updated successfully.');
         } catch (\Exception $e) {
             return redirect()
@@ -130,7 +130,7 @@ class ReservedVehicleController extends Controller
             Stock::where('id', $reserved)
                 ->update(['customer_account_id' => null, 'cnf' => 0]);
 
-            return redirect()->route('admin.reserved-vehicle.index')
+            return redirect()->route('reserved-vehicle.index')
                 ->with('success', 'Vehicle reservation cancelled successfully.');
         } catch (\Exception $e) {
             return redirect()

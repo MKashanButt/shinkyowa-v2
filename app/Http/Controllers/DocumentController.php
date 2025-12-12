@@ -49,7 +49,7 @@ class DocumentController extends Controller
 
         Document::create($validated);
 
-        return redirect()->route('admin.document.index')
+        return redirect()->route('document.index')
             ->with('success', 'Documents uploaded successfully.');
     }
 
@@ -75,7 +75,7 @@ class DocumentController extends Controller
 
         $document->update($validated);
 
-        return redirect()->route('admin.document.index')
+        return redirect()->route('document.index')
             ->with('success', 'Documents updated successfully.');
     }
 
@@ -101,7 +101,7 @@ class DocumentController extends Controller
             }
         }
 
-        return redirect()->route('admin.document.index')
+        return redirect()->route('document.index')
             ->with('success', 'Document and all associated files deleted successfully.');
     }
 }

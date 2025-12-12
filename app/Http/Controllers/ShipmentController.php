@@ -38,7 +38,7 @@ class ShipmentController extends Controller
 
         $shipment->stock()->attach($validated['stock_id']);
 
-        return redirect()->route('admin.shipment.index')
+        return redirect()->route('shipment.index')
             ->with('success', 'Shipment created successfully!');
     }
 
@@ -63,7 +63,7 @@ class ShipmentController extends Controller
             $shipment->stock()->sync($validated['stock_id']);
         }
 
-        return redirect()->route('admin.shipment.index')
+        return redirect()->route('shipment.index')
             ->with('success', 'Shipment updated successfully!');
     }
 
@@ -77,7 +77,7 @@ class ShipmentController extends Controller
 
         $shipment->delete();
 
-        return redirect()->route('admin.shipment.index')
+        return redirect()->route('shipment.index')
             ->with('success', 'Shipment deleted successfully');
     }
 }

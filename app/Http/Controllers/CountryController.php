@@ -27,7 +27,7 @@ class CountryController extends Controller
 
         Country::create($validated);
 
-        return redirect()->route('admin.country.index')
+        return redirect()->route('country.index')
             ->with('success', 'Country created successfully.');
     }
 
@@ -42,7 +42,7 @@ class CountryController extends Controller
 
         $country->update($validated);
 
-        return redirect()->route('admin.country.index')
+        return redirect()->route('country.index')
             ->with('success', 'Country updated successfully.');
     }
 

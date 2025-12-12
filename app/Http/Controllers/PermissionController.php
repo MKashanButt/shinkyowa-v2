@@ -36,7 +36,7 @@ class PermissionController extends Controller
 
         $permission->role()->attach($validated['role_id']);
 
-        return redirect()->route('admin.permission.index')
+        return redirect()->route('permission.index')
             ->with('success', 'Permission created successfully!');
     }
 
@@ -59,7 +59,7 @@ class PermissionController extends Controller
 
         $permission->role()->sync($validated['role_id']);
 
-        return redirect()->route('admin.permission.index')
+        return redirect()->route('permission.index')
             ->with('success', 'Permission updated successfully!');
     }
 
@@ -67,7 +67,7 @@ class PermissionController extends Controller
     {
         $permission->delete();
 
-        return redirect()->route('admin.permission.index')
+        return redirect()->route('permission.index')
             ->with('success', 'Permission deleted successfully!');
     }
 }

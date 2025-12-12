@@ -26,7 +26,7 @@ class CurrencyController extends Controller
 
         Currency::create($validated);
 
-        return redirect()->route('admin.currency.index')
+        return redirect()->route('currency.index')
             ->with('success', 'Currency created successfully.');
     }
 
@@ -41,7 +41,7 @@ class CurrencyController extends Controller
 
         $currency->update($validated);
 
-        return redirect()->route('admin.currency.index')
+        return redirect()->route('currency.index')
             ->with('success', 'Currency updated successfully.');
     }
 

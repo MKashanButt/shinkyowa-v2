@@ -79,7 +79,7 @@ class StockController extends Controller
 
         Stock::create($validated);
 
-        return redirect()->route('admin.stock.index')->with('success', 'Vehicle added successfully!');
+        return redirect()->route('stock.index')->with('success', 'Vehicle added successfully!');
     }
 
     /**
@@ -154,7 +154,7 @@ class StockController extends Controller
 
         $stock->update($request->except(['thumbnail', 'images', 'remove_thumbnail', 'remove_images']));
 
-        return redirect()->route('admin.stock.index')->with('success', 'Stock updated successfully');
+        return redirect()->route('stock.index')->with('success', 'Stock updated successfully');
     }
 
     public function search(Request $request)
@@ -182,7 +182,7 @@ class StockController extends Controller
         $stock = Stock::find($id);
 
         if (!$stock) {
-            return redirect()->route('admin.stock.index')
+            return redirect()->route('stock.index')
                 ->with('error', 'Vehicle not found!');
         }
 
@@ -203,7 +203,7 @@ class StockController extends Controller
 
             $stock->delete();
 
-            return redirect()->route('admin.stock.index')
+            return redirect()->route('stock.index')
                 ->with('success', 'Vehicle deleted successfully!');
         } catch (\Exception $e) {
             Log::error('Deletion failed: ' . $e->getMessage());

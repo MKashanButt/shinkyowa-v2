@@ -34,7 +34,7 @@ class MakeController extends Controller
 
         Make::create($validated);
 
-        return redirect()->route('admin.make.index')
+        return redirect()->route('make.index')
             ->with('success', 'Make created successfully.');
     }
 
@@ -59,7 +59,7 @@ class MakeController extends Controller
 
         $make->update($validated);
 
-        return redirect()->route('admin.make.index')
+        return redirect()->route('make.index')
             ->with('success', 'Make updated successfully.');
     }
 

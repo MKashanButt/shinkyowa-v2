@@ -102,7 +102,7 @@ class CustomerAccountController extends Controller
             'type'    => 'success',
         ]);
 
-        return redirect()->route('admin.customer-account.index')
+        return redirect()->route('customer-account.index')
             ->with('success', 'Customer account created successfully.');
     }
 
@@ -208,7 +208,7 @@ class CustomerAccountController extends Controller
             'type'    => 'success',
         ]);
 
-        return redirect()->route('admin.customer-account.index')
+        return redirect()->route('customer-account.index')
             ->with('success', 'Customer account updated successfully.');
     }
 
@@ -220,9 +220,9 @@ class CustomerAccountController extends Controller
             ->first();
 
         if ($customerAccount) {
-            return redirect()->route('admin.customer-account.show', $customerAccount->id);
+            return redirect()->route('customer-account.show', $customerAccount->id);
         } else {
-            return redirect()->route('admin.customer-account.index')
+            return redirect()->route('customer-account.index')
                 ->with('error', 'Customer account not found.');
         }
     }
@@ -235,9 +235,9 @@ class CustomerAccountController extends Controller
             ->first();
 
         if ($customerAccount) {
-            return redirect()->route('admin.customer-account.show', $customerAccount->id);
+            return redirect()->route('customer-account.show', $customerAccount->id);
         } else {
-            return redirect()->route('admin.customer-account.index')
+            return redirect()->route('customer-account.index')
                 ->with('error', 'No customer accounts found for the specified company.');
         }
     }
@@ -264,7 +264,7 @@ class CustomerAccountController extends Controller
             'type'    => 'danger',
         ]);
 
-        return redirect()->route('admin.customer-account.index')
+        return redirect()->route('customer-account.index')
             ->with('success', 'Customer account deleted successfully.');
     }
 }

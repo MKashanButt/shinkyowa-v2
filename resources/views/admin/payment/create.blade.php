@@ -43,7 +43,7 @@
                     <div class="flex items-center gap-2">
                         <x-input-label for="amount" class="w-[32%] after:content-['*'] after:text-red-500">Amount
                         </x-input-label>
-                        <x-text-input type="number" id="in_usd" name="amount" class="w-4/5"
+                        <x-text-input type="number" id="amount" name="amount" class="w-4/5"
                             value="{{ old('amount') }}" />
                         <x-input-error :messages="$errors->get('amount')" class="mt-2" />
                     </div>
@@ -82,7 +82,7 @@
                             class="w-[32%] after:content-['*'] after:text-red-500">File</x-input-label>
                         <input
                             class="block w-4/5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
-                            id="image" type="file" name="file" value="{{ old('file') }}" required>
+                            id="file" type="file" name="file" required>
                         <x-input-error :messages="$errors->get('file')" class="mt-2" />
                     </div>
                 </div>

@@ -67,13 +67,12 @@ class PaymentController extends Controller
         $validated['user_id'] = Auth::id();
 
         if (Auth::user()->hasRole('admin')) {
-
             $validated['status'] = 'approved';
         }
 
         Payment::create($validated);
 
-        return redirect()->route('admin.payment.index')
+        return redirect()->route('payment.index')
             ->with('success', 'Payment created successfully.');
     }
 
@@ -114,7 +113,7 @@ class PaymentController extends Controller
 
         $payment->update($validated);
 
-        return redirect()->route('admin.payment.index')
+        return redirect()->route('payment.index')
             ->with('success', 'Payment updated successfully.');
     }
 
@@ -131,7 +130,7 @@ class PaymentController extends Controller
 
             $payment->delete();
 
-            return redirect()->route('admin.payment.index')
+            return redirect()->route('payment.index')
                 ->with('success', 'Payment deleted successfully.');
         } catch (\Exception $e) {
             return back()->with('error', 'Error deleting payment: ' . $e->getMessage());

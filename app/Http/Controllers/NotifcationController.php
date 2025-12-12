@@ -18,7 +18,7 @@ class NotifcationController extends Controller
     {
         $notification->markAsRead();
 
-        return redirect()->route('admin.notification.index')
+        return redirect()->route('notification.index')
             ->with('success', 'Notification marked as read successfully.');
     }
 
@@ -26,7 +26,7 @@ class NotifcationController extends Controller
     {
         $notification->delete();
 
-        return redirect()->route('admin.notification.index')
+        return redirect()->route('notification.index')
             ->with('success', 'Notification deleted successfully.');
     }
 }
