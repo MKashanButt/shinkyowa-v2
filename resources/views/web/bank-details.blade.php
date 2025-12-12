@@ -52,7 +52,7 @@
         <li>Once the payment is received the following documentation, necessary to clear the vehicle at the destination
             port, will be sent to you via mail or courier after the vessel has been shipped.
             <ol>
-                <li><span>1. </span>Bill of landing</li>
+                <li><span>1. </span>Bill of lading</li>
                 <li><span>2. </span>Invoice</li>
                 <li><span>3. </span>Export Certification</li>
                 <li><span>4. </span>Other required documents in your local custom</li>
