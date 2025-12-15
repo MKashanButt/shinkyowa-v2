@@ -13,30 +13,20 @@
         <form action="/filter" method="get">
             <div class="row">
                 <select name="make" id="filtermake">
-                    @if (Request::get('make'))
-                        <option selected>{{ strtoupper(Request::get('make')) }}</option>
-                        @foreach ($filterOptions['make'] as $item)
-                            <option value="{{ $item['name'] }}">{{ strtoupper($item['name']) }}</option>
-                        @endforeach
-                    @else
-                        <option disabled selected>Select Make</option>
-                        @foreach ($filterOptions['make'] as $item)
-                            <option value="{{ $item['name'] }}">{{ strtoupper($item['name']) }}</option>
-                        @endforeach
-                    @endif
+                    <option disabled {{ Request::get('make') ? '' : 'selected' }}>Select Make</option>
+                    @foreach ($filterOptions['make'] as $item)
+                        <option value="{{ $item['name'] }}" {{ Request::get('make') == $item['name'] ? 'selected' : '' }}>
+                            {{ strtoupper($item['name']) }}
+                        </option>
+                    @endforeach
                 </select>
                 <select name=" model" id="filtermodel">
-                    @if (Request::get('model'))
-                        <option selected>{{ strtoupper(Request::get('model')) }}</option>
-                        @foreach ($filterOptions['model'] as $item)
-                            <option value="{{ $item['name'] }}">{{ strtoupper($item['name']) }}</option>
-                        @endforeach
-                    @else
-                        <option disabled selected>Select Model</option>
-                        @foreach ($filterOptions['model'] as $item)
-                            <option value="{{ $item['model'] }}">{{ strtoupper($item['model']) }}</option>
-                        @endforeach
-                    @endif
+                    <option disabled {{ Request::get('model') ? '' : 'selected' }}>Select Model</option>
+                    @foreach ($filterOptions['model'] as $item)
+                        <option value="{{ $item['model'] }}" {{ Request::get('model') == $item['model'] ? 'selected' : '' }}>
+                            {{ strtoupper($item['model']) }}
+                        </option>
+                    @endforeach
                 </select>
                 <select name="category" id="filtercategory">
                     @if (Request::get('category'))
@@ -78,30 +68,22 @@
                     @endif
                 </select>
                 <select name="yearfrom" id="yearfrom">
-                    @if (Request::get('yearfrom'))
-                        <option selected>{{ Request::get('yearfrom') }}</option>
-                        @foreach ($filterOptions['year'] as $item)
-                            <option value="{{ $item['year'] }}">{{ strtoupper($item['year']) }}</option>
-                        @endforeach
-                    @else
-                        <option value="" disabled selected>Year From</option>
-                        @foreach ($filterOptions['year'] as $item)
-                            <option value="{{ $item['year'] }}">{{ strtoupper($item['year']) }}</option>
-                        @endforeach
-                    @endif
+                    <option value="" disabled {{ Request::get('yearfrom') ? '' : 'selected' }}>Year From
+                    </option>
+                    @foreach ($filterOptions['year'] as $item)
+                        <option value="{{ $item['year'] }}" {{ Request::get('year') == $item['year'] ? 'selected' : '' }}>
+                            {{ strtoupper($item['year']) }}
+                        </option>
+                    @endforeach
                 </select>
                 <select name="yearto" id="yearto">
-                    @if (Request::get('yearto'))
-                        <option selected>{{ Request::get('yearto') }}</option>
-                        @foreach ($filterOptions['year'] as $item)
-                            <option value="{{ $item['year'] }}">{{ strtoupper($item['year']) }}</option>
-                        @endforeach
-                    @else
-                        <option value="" disabled selected>Year To</option>
-                        @foreach ($filterOptions['year'] as $item)
-                            <option value="{{ $item['year'] }}">{{ strtoupper($item['year']) }}</option>
-                        @endforeach
-                    @endif
+                    <option value="" disabled {{ Request::get('yearto') ? '' : 'selected' }}>Year To
+                    </option>
+                    @foreach ($filterOptions['year'] as $item)
+                        <option value="{{ $item['year'] }}" {{ Request::get('yearto') == $item['year'] ? 'selected' : '' }}>
+                            {{ strtoupper($item['year']) }}
+                        </option>
+                    @endforeach
                 </select>
             </div>
             <button type="submit">Filter</button>
@@ -138,6 +120,74 @@
         @endif
     </div>
 </x-web-layout>
-@push('css')
-    <script src="{{ asset('js/ajax.js') }}"></script>
-@endpush
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document
+            .getElementById("filtermake")
+            .addEventListener("change", function () {
+                let make = this.value;
+                let xhr = new XMLHttpRequest();
+                xhr.open("GET", "/get-models?make=" + make, true);
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        let models = JSON.parse(xhr.responseText);
+                        let modelDropdown = document.getElementById("filtermodel");
+                        modelDropdown.innerHTML =
+                            "<option disabled selected>Select Model</option>";
+                        models.forEach(function (model) {
+                            let option = document.createElement("option");
+                            option.value = model;
+                            option.text = model.toUpperCase();
+                            modelDropdown.appendChild(option);
+                        });
+                    }
+                };
+                xhr.send();
+            });
+
+        document
+            .getElementById("filtermodel")
+            .addEventListener("change", function () {
+                let model = this.value;
+                let xhr = new XMLHttpRequest();
+                xhr.open("GET", "/get-years?model=" + model, true);
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        let years = JSON.parse(xhr.responseText);
+                        let yearDropdown = document.getElementById("yearfrom");
+                        yearDropdown.innerHTML =
+                            "<option disabled selected>Year From</option>";
+                        years.forEach(function (year) {
+                            let option = document.createElement("option");
+                            option.value = year;
+                            option.text = year;
+                            yearDropdown.appendChild(option);
+                        });
+                    }
+                };
+                xhr.send();
+            });
+        document
+            .getElementById("filtermodel")
+            .addEventListener("change", function () {
+                let model = this.value;
+                let xhr = new XMLHttpRequest();
+                xhr.open("GET", "/get-years?model=" + model, true);
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        let years = JSON.parse(xhr.responseText);
+                        let yearDropdown = document.getElementById("yearto");
+                        yearDropdown.innerHTML =
+                            "<option disabled selected>Year To</option>";
+                        years.forEach(function (year) {
+                            let option = document.createElement("option");
+                            option.value = year;
+                            option.text = year;
+                            yearDropdown.appendChild(option);
+                        });
+                    }
+                };
+                xhr.send();
+            });
+    });
+</script>
