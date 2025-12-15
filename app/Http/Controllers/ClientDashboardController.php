@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CustomerAccount;
+use App\Models\Stock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,10 +11,6 @@ class ClientDashboardController extends Controller
 {
     public function index()
     {
-        // $accountInfo = CustomerAccount::where('email', Auth::user()->email)
-        //     ->get()
-        //     ->first();
-
         $customerAccount = CustomerAccount::whereEmail(Auth::user()->email)->firstOrFail();
 
         $id = $customerAccount->id;
@@ -52,7 +49,5 @@ class ClientDashboardController extends Controller
         $customerAccount->reserved_stock_count = $customerAccount->stock->count();
 
         return view('admin.customer-account.show', compact('customerAccount'));
-
-        // return view('client.dashboard', compact('accountInfo'));
     }
 }
