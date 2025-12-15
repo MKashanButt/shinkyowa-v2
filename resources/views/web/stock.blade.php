@@ -127,9 +127,9 @@
             <p class="msg">No Vehicle Present</p>
         @endif
         @foreach ($vehicles as $item)
-            <x-vehicle-listing-card :img="$item['thumbnail']" :id="$item['id']" :make="$item['make']['name']"
-                :model="$item['model']" :year="$item['year']" :mileage="$item['mileage']" :chassis="$item['chassis']"
-                :doors="$item['doors']" :transmission="$item['transmission']" />
+            <x-vehicle-listing-card :img="$item['thumbnail']" :id="$item['id']" :stockId="$item['sid']"
+                :make="$item['make']['name']" :model="$item['model']" :year="$item['year']" :mileage="$item['mileage']"
+                :chassis="$item['chassis']" :doors="$item['doors']" :transmission="$item['transmission']" />
         @endforeach
     </div>
     <div class="pagination">
