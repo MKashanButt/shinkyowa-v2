@@ -49,7 +49,7 @@ Route::view('/about-us/why-choose-us', 'web.why-choose-us');
 Route::view('/sales-and-bank-details', 'web.bank-details');
 
 Route::prefix('client')
-    ->middleware('customerRoleCheck')
+    ->middleware(['auth', 'customerRoleCheck'])
     ->group(function () {
         Route::get('/', [ClientDashboardController::class, 'index'])->name('client.dashboard');
     });
