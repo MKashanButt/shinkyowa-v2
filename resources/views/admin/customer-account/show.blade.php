@@ -163,9 +163,11 @@
                                         {{ $customerAccount->currency->symbol ?? '$' }}{{ number_format($stock->cnf, 2) }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        {{ $stock->shipment->first()?->vessel_name }}
-                                        ETA: {{ $stock->shipment->first()?->eta }}
-                                        ETD: {{ $stock->shipment->first()?->etd }}
+                                        <div class="flex flex-col gap-2">
+                                            Vessel: {{ $stock->shipment->first()?->vessel_name }}
+                                            ETA: {{ $stock->shipment->first()?->eta }}
+                                            ETD: {{ $stock->shipment->first()?->etd }}
+                                        </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm">
                                         @if ($stock->getDepositAttribute() >= $stock->fob)
@@ -247,7 +249,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm">
                                         <span
                                             class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                                                                                                                                                                                                                                                                                                                                                                {{ $payment->status == 'approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
+                                                                                                                                                                                                                                                                                                                                                                                                        {{ $payment->status == 'approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
                                             {{ ucfirst($payment->status) }}
                                         </span>
                                     </td>
