@@ -29,43 +29,30 @@
                     @endforeach
                 </select>
                 <select name="category" id="filtercategory">
-                    @if (Request::get('category'))
-                        <option selected>{{ strtoupper(Request::get('category')) }}</option>
-                        <option value="stock">STOCK</option>
-                        <option value="new arrival">NEW ARRIVAL</option>
-                        <option value="discounted">DISCOUNTED</option>
-                        <option value="commercial">COMMERCIAL</option>
-                    @else
-                        <option value="" disabled selected>Select Category</option>
-                        <option value="stock">STOCK</option>
-                        <option value="new arrival">NEW ARRIVAL</option>
-                        <option value="discounted">DISCOUNTED</option>
-                        <option value="commercial">COMMERCIAL</option>
-                    @endif
+                    <option value="" disabled {{ Request::get('category') ? '' : 'selected' }}>Select Category
+                    </option>
+                    <option value="stock" {{ Request::get('category') == 'stock' ? 'selected' : '' }}>STOCK</option>
+                    <option value="new arrival" {{ Request::get('category') == 'new arrival' ? 'selected' : '' }}>NEW
+                        ARRIVAL
+                    </option>
+                    <option value="discounted" {{ Request::get('category') == 'discounted' ? 'selected' : '' }}>DISCOUNTED
+                    </option>
+                    <option value="commercial" {{ Request::get('category') == 'commercial' ? 'selected' : '' }}>COMMERCIAL
+                    </option>
                 </select>
                 <select name="fueltype" id="filterfueltype">
-                    @if (Request::get('fueltype'))
-                        <option selected>{{ strtoupper(Request::get('fueltype')) }}</option>
-                        <option value="petrol">PETROL</option>
-                        <option value="diesel">DIESEL</option>
-                        <option value="hybrid">HYBRID</option>
-                    @else
-                        <option value="" disabled selected>Select Fuel Type</option>
-                        <option value="petrol">PETROL</option>
-                        <option value="diesel">DIESEL</option>
-                        <option value="hybrid">HYBRID</option>
-                    @endif
+                    <option value="" disabled {{ Request::get('fueltype') ? '' : 'selected' }}>Select Fuel Type</option>
+                    <option value="petrol" {{ Request::get('fueltype') == 'petrol' ? 'selected' : '' }}>PETROL
+                    </option>
+                    <option value="diesel" {{ Request::get('fueltype') == 'diesel' ? 'selected' : '' }}>DIESEL</option>
+                    <option value="hybrid" {{ Request::get('fueltype') == 'hybrid' ? 'selected' : '' }}>HYBRID</option>
                 </select>
                 <select name="transmission" id="transmission">
-                    @if (Request::get('transmission'))
-                        <option selected>{{ strtoupper(Request::get('transmission')) }}</option>
-                        <option value="manual">MANUAL</option>
-                        <option value="automatic">AUTOMATIC</option>
-                    @else
-                        <option value="" disabled selected>Select Transmission</option>
-                        <option value="manual">MANUAL</option>
-                        <option value="automatic">AUTOMATIC</option>
-                    @endif
+                    <option value="" disabled {{ Request::get('transmission') ? '' : 'selected' }}>Select Transmission
+                    </option>
+                    <option value="manual" {{ Request::get('fueltype') == 'manual' ? 'selected' : '' }}>MANUAL</option>
+                    <option value="automatic" {{ Request::get('fueltype') == 'automatic' ? 'selected' : '' }}>AUTOMATIC
+                    </option>
                 </select>
                 <select name="yearfrom" id="yearfrom">
                     <option value="" disabled {{ Request::get('yearfrom') ? '' : 'selected' }}>Year From
