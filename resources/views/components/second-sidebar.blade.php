@@ -23,10 +23,12 @@
     </div>
     <hr>
     <div class="offers">
-        <a href="/stock"><img src="{{ env('IMAGE_API_URL') . 'images/offers/offer-one.gif' }}" alt=""></a>
-        <a href="/stock"><img src="{{ env('IMAGE_API_URL') . 'images/offers/offer-two.gif' }}" alt=""></a>
-        <a href="/filter?yearfrom=2024"><img src="{{ env('IMAGE_API_URL') . 'images/offers/offer-three.gif' }}"
+        <a href="/stock"><img src="{{ env('IMAGE_API_URL') . 'images/offers/offer-one.gif' }}" loading="lazy"
                 alt=""></a>
+        <a href="/stock"><img src="{{ env('IMAGE_API_URL') . 'images/offers/offer-two.gif' }}" loading="lazy"
+                alt=""></a>
+        <a href="/filter?yearfrom=2024"><img src="{{ env('IMAGE_API_URL') . 'images/offers/offer-three.gif' }}"
+                loading="lazy" alt=""></a>
     </div>
     <hr>
 </aside>

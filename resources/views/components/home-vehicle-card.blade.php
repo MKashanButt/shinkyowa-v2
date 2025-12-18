@@ -1,6 +1,6 @@
 <div class="item">
     <a href="/vehicle-info/{{ $id }}">
-        <img src="{{ env('STOCK_IMG_LINK') . $img }}" alt="stock-image">
+        <img src="{{ env('STOCK_IMG_LINK') . $img }}" alt="stock-image" loading="lazy">
         <h4>{{ strtoupper($make) }} {{ strtoupper($model) }}</h4>
         @if ($fob == 0)
             <button class="primary">Inquiry</button>

@@ -1,6 +1,6 @@
 <a href="/vehicle-info/{{ $id }}">
     <div class="item flex">
-        <img src="{{ env('STOCK_IMG_LINK') . $img }}" alt="">
+        <img src="{{ env('STOCK_IMG_LINK') . $img }}" loading="lazy" alt="">
         <div class="content">
             <h3>{{ strtoupper($year) }} {{ strtoupper($make) }} {{ strtoupper($model) }}</h3>
             <div class="text">
