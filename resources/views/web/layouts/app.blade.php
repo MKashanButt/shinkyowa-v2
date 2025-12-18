@@ -122,17 +122,17 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <a href="/stock">
-                        <img src="{{ env('IMAGE_API_URL') . 'images/banner-one.png' }}" alt="slider-image">
+                        <img src="{{ env('IMAGE_API_URL') . 'images/banner-one.png' }}" alt="slider-image" loading="lazy">
                     </a>
                 </div>
                 <div class="swiper-slide">
                     <a href="/filter?make=toyota&model=hilux&year=2024">
-                        <img src="{{ env('IMAGE_API_URL') . 'images/banner-two.png' }}" alt="slider-image">
+                        <img src="{{ env('IMAGE_API_URL') . 'images/banner-two.png' }}" alt="slider-image" loading="lazy">
                     </a>
                 </div>
                 <div class="swiper-slide">
                     <a href="/filter?make=honda&model=crv">
-                        <img src="{{ env('IMAGE_API_URL') . 'images/banner-three.png' }}" alt="slider-image">
+                        <img src="{{ env('IMAGE_API_URL') . 'images/banner-three.png' }}" alt="slider-image" loading="lazy">
                     </a>
                 </div>
             </div>
