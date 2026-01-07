@@ -40,7 +40,9 @@ class DashboardController extends Controller
         $payments = Payment::with('customerAccount')
             ->when(Auth::user()->hasPermission('view_team_customers'), function ($query) {
                 $managerAgentIds = User::where('manager_id', Auth::id())
-                    ->where('role', 'agent')
+                    ->whereHas('role', function ($r) {
+                        $r->where('name', 'agent');
+                    })
                     ->pluck('id');
 
                 $query->whereHas('customerAccount', function ($q) use ($managerAgentIds) {
