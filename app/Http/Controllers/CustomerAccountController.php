@@ -32,7 +32,10 @@ class CustomerAccountController extends Controller
                     ->whereHas('role', function ($r) {
                         $r->where('name', 'agent');
                     })
-                    ->pluck('id');
+                    ->pluck('id')
+                    ->toArray();
+
+                $managerAgentIds[] = Auth::id();
                 $query->whereIn('agent_id', $managerAgentIds);
             })
             ->when(Auth::user()->hasPermission('view_own_customers'), function ($query) {
