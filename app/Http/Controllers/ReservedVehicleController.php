@@ -20,6 +20,8 @@ class ReservedVehicleController extends Controller
                     ->where('role', 'agent')
                     ->pluck('id');
 
+                $managerAgentIds[] = Auth::id();
+
                 $query->whereHas('customerAccount', function ($q) use ($managerAgentIds) {
                     $q->whereIn('agent_id', $managerAgentIds);
                 });
