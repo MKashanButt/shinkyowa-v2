@@ -68,6 +68,12 @@ class PermissionSeeder extends Seeder
 
         $permission->role()->attach([3]);
 
+        $permission = Permission::create([
+            'name' => 'view_own_reserved_vehicles',
+        ]);
+
+        $permission->role()->attach([1]);
+
         // Manager Only Permission
         $permission = Permission::create([
             'name' => 'view_team_customers',
@@ -120,6 +126,12 @@ class PermissionSeeder extends Seeder
 
         $permission = Permission::create([
             'name' => 'can_delete_customer',
+        ]);
+
+        $permission->role()->attach([1, 2]);
+
+        $permission = Permission::create([
+            'name' => 'view_team_reserved_vehicles',
         ]);
 
         $permission->role()->attach([1, 2]);
