@@ -20,7 +20,10 @@ class PaymentController extends Controller
             ->when(Auth::user()->hasPermission('view_team_payments'), function ($query) {
                 $managerAgentIds = User::where('manager_id', Auth::id())
                     ->where('role', 'agent')
-                    ->pluck('id');
+                    ->pluck('id')
+                    ->toArray();
+
+                $managerAgentIds[] = Auth::id();
 
                 $query->whereIn('user_id', $managerAgentIds);
             })
