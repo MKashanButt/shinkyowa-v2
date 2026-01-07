@@ -29,7 +29,9 @@ class CustomerAccountController extends Controller
             ])
             ->when(Auth::user()->hasPermission('view_team_customers'), function ($query) {
                 $managerAgentIds = User::where('manager_id', Auth::id())
-                    ->where('role', 'agent')
+                    ->whereHas('role', function ($r) {
+                        $r->where('name', 'agent');
+                    })
                     ->pluck('id');
                 $query->whereIn('agent_id', $managerAgentIds);
             })
