@@ -56,7 +56,7 @@ class CustomerAccountController extends Controller
         })->pluck('name', 'id');
 
         $managerUsers = User::whereHas('role', function ($q) {
-            $q->where('name', 'managers');
+            $q->where('name', 'manager');
         })->pluck('name', 'id');
 
         $overallUsers = $managerUsers->union($agentUsers);
