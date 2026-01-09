@@ -45,12 +45,10 @@ class ReservedVehicleController extends Controller
                 ->whereHas('role', function ($r) {
                     $r->where('name', 'agent');
                 })
-                ->pluck('id');
+                ->pluck('id')
+                ->push(Auth::id());
 
-            $managerAgentIds[] = Auth::id();
-            $query->whereHas('customerAccount', function ($q) use ($managerAgentIds) {
-                $q->whereIn('agent_id', $managerAgentIds);
-            });
+            $query->whereIn('agent_id', $managerAgentIds);
         })
             ->when(Auth::user()->hasPermission('view_own_reserved_vehicles'), function ($query) {
                 $query->whereHas('customerAccount', function ($q) {
