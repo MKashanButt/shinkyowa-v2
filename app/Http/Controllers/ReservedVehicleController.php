@@ -42,9 +42,12 @@ class ReservedVehicleController extends Controller
             ->pluck('sid', 'id');
         $customerAccounts = CustomerAccount::when(Auth::user()->hasPermission('view_team_reserved_vehicles'), function ($query) {
             $managerAgentIds = User::where('manager_id', Auth::id())
-                ->where('role', 'agent')
+                ->whereHas('role', function ($r) {
+                    $r->where('name', 'agent');
+                })
                 ->pluck('id');
 
+            $managerAgentIds[] = Auth::id();
             $query->whereHas('customerAccount', function ($q) use ($managerAgentIds) {
                 $q->whereIn('agent_id', $managerAgentIds);
             });
