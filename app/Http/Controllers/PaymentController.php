@@ -48,9 +48,8 @@ class PaymentController extends Controller
                 $query->where('agent_id', Auth::id());
             })
             ->pluck('name', 'id');
-        $stocks = Stock::pluck('sid', 'id');
 
-        return view('admin.payment.create', compact('customerAccounts', 'stocks'));
+        return view('admin.payment.create', compact('customerAccounts'));
     }
 
     public function store(StorePaymentRequest $request)
