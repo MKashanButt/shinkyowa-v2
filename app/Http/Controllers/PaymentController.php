@@ -42,9 +42,7 @@ class PaymentController extends Controller
                 ->where('role', 'agent')
                 ->pluck('id');
 
-            $query->whereHas('customerAccount', function ($q) use ($managerAgentIds) {
-                $q->whereIn('agent_id', $managerAgentIds);
-            });
+            $query->whereIn('agent_id', $managerAgentIds);
         })
             ->when(Auth::user()->hasPermission('view_own_reserved_vehicles'), function ($query) {
                 $query->whereHas('customerAccount', function ($q) {
