@@ -57,6 +57,8 @@ class PaymentController extends Controller
     {
         $validated = $request->validated();
 
+        $validated['stock_id'] = Stock::where('sid', $validated['stock_id'])->value('id');
+
         if ($request->hasFile('file')) {
             $filePath = $request->file('file')
                 ->store('payment_files', 'public');
