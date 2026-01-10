@@ -38,8 +38,6 @@ class ReservedVehicleController extends Controller
 
     public function create()
     {
-        $stocks = Stock::whereDoesntHave('customerAccount')
-            ->pluck('sid', 'id');
         $customerAccounts = CustomerAccount::when(Auth::user()->hasPermission('view_team_reserved_vehicles'), function ($query) {
             $managerAgentIds = User::where('manager_id', Auth::id())
                 ->whereHas('role', function ($r) {
@@ -55,7 +53,7 @@ class ReservedVehicleController extends Controller
             })
             ->pluck('name', 'id');
 
-        return view('admin.reserved-vehicle.create', compact('stocks', 'customerAccounts'));
+        return view('admin.reserved-vehicle.create', compact('customerAccounts'));
     }
 
     public function store(StoreReservedVehicleRequest $request)
