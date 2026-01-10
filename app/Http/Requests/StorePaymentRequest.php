@@ -23,7 +23,7 @@ class StorePaymentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'stock_id' => 'nullable|exists:stocks,id',
+            'stock_id' => 'nullable|exists:stocks,sid',
             'description' => 'required|string|max:255',
             'payment_date' => 'required|date',
             'amount' => 'required|numeric|min:0',
@@ -37,7 +37,7 @@ class StorePaymentRequest extends FormRequest
     public function messages()
     {
         return [
-            'stock_id.exists' => 'The selected stock ID is invalid.',
+            'stock_id.exists' => 'The stock ID is invalid.',
 
             'description.required' => 'The description field is required.',
             'description.string' => 'The description should be a valid string.',
