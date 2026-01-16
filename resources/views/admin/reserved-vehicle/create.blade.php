@@ -14,7 +14,7 @@
                 <h2 class="w-full bg-gray-200/50 my-2 p-2 border-l-2 border-blue-900">Info</h2>
                 <div class="w-full grid grid-cols-2 gap-4">
                     <div class="flex items-center gap-2">
-                        <x-input-label for="sid" class="w-[32%] after:content-['*'] after:text-red-500">Stock
+                        <x-input-label for="stock_id" class="w-[32%] after:content-['*'] after:text-red-500">Stock
                             Id</x-input-label>
                         <div class="w-4/5 flex gap-1">
                             <x-pill>SKI-</x-pill>
@@ -22,7 +22,7 @@
                                 value="{{ old('stock_id') }}"
                                 placeholder="Enter Stock Id number with no preceding zero's" />
                         </div>
-                        <x-input-error :messages="$errors->get('sid')" class="mt-2" />
+                        <x-input-error :messages="$errors->get('stock_id')" class="mt-2" />
                     </div>
                     <div class="flex items-center gap-2">
                         <x-input-label for="cnf"
