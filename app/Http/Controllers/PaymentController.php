@@ -19,7 +19,7 @@ class PaymentController extends Controller
         $payments = Payment::with('customerAccount')
             ->when(Auth::user()->hasPermission('view_team_payments'), function ($query) {
                 $managerAgentIds = User::where('manager_id', Auth::id())
-                    ->where('role', 'agent')
+                    ->whereHas('role', fn($r) => $r->where('name', 'agent'))
                     ->pluck('id')
                     ->toArray();
 
@@ -39,7 +39,7 @@ class PaymentController extends Controller
     {
         $customerAccounts = CustomerAccount::when(Auth::user()->hasPermission('view_team_reserved_vehicles'), function ($query) {
             $managerAgentIds = User::where('manager_id', Auth::id())
-                ->where('role', 'agent')
+                ->whereHas('role', fn($r) => $r->where('name', 'agent'))
                 ->pluck('id');
 
             $query->whereIn('agent_id', $managerAgentIds);
@@ -80,12 +80,11 @@ class PaymentController extends Controller
     {
         $customerAccounts = CustomerAccount::when(Auth::user()->hasPermission('view_team_reserved_vehicles'), function ($query) {
             $managerAgentIds = User::where('manager_id', Auth::id())
-                ->where('role', 'agent')
-                ->pluck('id');
+                ->whereHas('role', fn($r) => $r->where('name', 'agent'))
+                ->pluck('id')
+                ->push(Auth::id());
 
-            $query->whereHas('customerAccount', function ($q) use ($managerAgentIds) {
-                $q->whereIn('agent_id', $managerAgentIds);
-            });
+            $query->whereIn('agent_id', $managerAgentIds);
         })
             ->when(Auth::user()->hasPermission('view_own_reserved_vehicles'), function ($query) {
                 $query->whereHas('customerAccount', function ($q) {
@@ -93,9 +92,10 @@ class PaymentController extends Controller
                 });
             })
             ->pluck('name', 'id');
-        $stocks = Stock::pluck('sid', 'id');
 
-        return view('admin.payment.edit', compact('payment', 'customerAccounts', 'stocks'));
+        $payment->load('stock', 'customerAccount', 'user');
+
+        return view('admin.payment.edit', compact('payment', 'customerAccounts'));
     }
 
     public function update(UpdatePaymentRequest $request, Payment $payment)
