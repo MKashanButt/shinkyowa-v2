@@ -74,9 +74,21 @@ class PermissionSeeder extends Seeder
 
         $permission->role()->attach([1]);
 
+        $permission = Permission::create([
+            'name' => 'view_own_shipments',
+        ]);
+
+        $permission->role()->attach([1]);
+
         // Manager Only Permission
         $permission = Permission::create([
             'name' => 'view_team_customers',
+        ]);
+
+        $permission->role()->attach([2]);
+
+        $permission = Permission::create([
+            'name' => 'view_team_shipments',
         ]);
 
         $permission->role()->attach([2]);
@@ -136,6 +148,12 @@ class PermissionSeeder extends Seeder
 
         $permission->role()->attach([1, 2]);
 
+        $permission = Permission::create([
+            'name' => 'can_edit_payment',
+        ]);
+
+        $permission->role()->attach([1, 2]);
+
         // Manager Only Permissions
         $permission = Permission::create([
             'name' => 'view_team_members',
@@ -164,6 +182,12 @@ class PermissionSeeder extends Seeder
 
         $permission = Permission::create([
             'name' => 'add_payment_recieved_date',
+        ]);
+
+        $permission->role()->attach([1]);
+
+        $permission = Permission::create([
+            'name' => 'can_delete_payment',
         ]);
 
         $permission->role()->attach([1]);
