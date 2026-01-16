@@ -6,6 +6,7 @@ use App\Http\Requests\StoreShipmentRequest;
 use App\Http\Requests\UpdateShipmentRequest;
 use App\Models\Shipment;
 use App\Models\Stock;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,6 +15,19 @@ class ShipmentController extends Controller
     public function index()
     {
         $shipments = Shipment::with('stock')
+            ->when(Auth::user()->hasPermission('view_team_shipments'), function ($query) {
+                $managerAgentIds = User::where('manager_id', Auth::id())
+                    ->whereHas('role', fn($r) => $r->where('name', 'agent'))
+                    ->pluck('id')
+                    ->toArray();
+
+                $managerAgentIds[] = Auth::id();
+
+                $query->whereIn('user_id', $managerAgentIds);
+            })
+            ->when(Auth::user()->hasPermission('view_own_shipments'), function ($query) {
+                $query->where('user_id', Auth::id());
+            })
             ->paginate(8);
 
         return view('admin.shipment.index', compact('shipments'));
