@@ -226,6 +226,7 @@
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
                             @forelse($customerAccount->payment as $payment)
+                                @dd($payment->stock->documents)
                                 @if($payment->stock && $payment->stock->documents->count())
                                     @foreach($payment->stock->documents as $document)
                                         <tr>
@@ -276,7 +277,7 @@
                             @empty
                                 <tr>
                                     <td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">
-                                        No payment history found
+                                        No documents found
                                     </td>
                                 </tr>
                             @endforelse
@@ -340,7 +341,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm">
                                         <span
                                             class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            {{ $payment->status == 'approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            {{ $payment->status == 'approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
                                             {{ ucfirst($payment->status) }}
                                         </span>
                                     </td>
