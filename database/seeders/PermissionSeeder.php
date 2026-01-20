@@ -191,5 +191,11 @@ class PermissionSeeder extends Seeder
         ]);
 
         $permission->role()->attach([1]);
+
+        $permission = Permission::create([
+            'name' => 'add_document',
+        ]);
+
+        $permission->role()->attach([1]);
     }
 }
