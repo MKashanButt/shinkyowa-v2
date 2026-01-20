@@ -124,8 +124,18 @@ class CustomerAccountController extends Controller
                     ->orderBy('created_at', 'desc');
             },
             'payment' => function ($query) {
-                $query->with(['stock:id,sid'])
-                    ->orderBy('payment_date', 'desc')
+                $query->with([
+                    'stock' => function ($q) {
+                        $q->with([
+                            'document',
+                            'make',
+                            'currency',
+                            'shipment',
+                            'payment'
+                        ])->select(['id', 'sid']);
+                    }
+                ])
+                    ->orderByDesc('payment_date')
                     ->select([
                         'id',
                         'customer_account_id',
@@ -138,7 +148,7 @@ class CustomerAccountController extends Controller
                         'status',
                         'file',
                     ]);
-            }
+            },
         ]);
 
         $customerAccount->buying = $customerAccount->stock->sum('fob');
