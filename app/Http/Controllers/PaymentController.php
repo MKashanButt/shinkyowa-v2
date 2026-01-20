@@ -37,20 +37,27 @@ class PaymentController extends Controller
 
     public function create()
     {
-        $customerAccounts = CustomerAccount::when(Auth::user()->hasPermission('view_team_reserved_vehicles'), function ($query) {
-            $managerAgentIds = User::where('manager_id', Auth::id())
-                ->whereHas('role', fn($r) => $r->where('name', 'agent'))
-                ->pluck('id')
-                ->toArray();
+        $customerAccounts = CustomerAccount::query()
+            ->when(Auth::user()->hasPermission('view_team_reserved_vehicles'), function ($query) {
 
-            $managerAgentIds[] = Auth::id();
+                $managerAgentIds = User::where('manager_id', Auth::id())
+                    ->whereHas('role', fn($r) => $r->where('name', 'agent'))
+                    ->pluck('id')
+                    ->toArray();
 
-            $query->whereIn('agent_id', $managerAgentIds);
-        })
-            ->when(Auth::user()->hasPermission('view_own_reserved_vehicles'), function ($query) {
-                $query->where('agent_id', Auth::id());
+                // Include manager himself
+                $managerAgentIds[] = Auth::id();
+
+                $query->whereIn('agent_id', $managerAgentIds);
+            }, function ($query) {
+
+                // Only runs if team permission is NOT present
+                if (Auth::user()->hasPermission('view_own_reserved_vehicles')) {
+                    $query->where('agent_id', Auth::id());
+                }
             })
             ->pluck('name', 'id');
+
 
         return view('admin.payment.create', compact('customerAccounts'));
     }
