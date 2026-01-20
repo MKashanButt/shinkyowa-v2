@@ -24,7 +24,7 @@ class StoreReservedVehicleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'sid' => ['required', 'exists:stocks,sid'],
+            'stock_id' => ['required', 'exists:stocks,sid'],
             'cnf' => ['required', 'numeric', 'min:0'],
             'customer_account_id' => ['required', 'exists:customer_accounts,id'],
         ];
@@ -33,8 +33,8 @@ class StoreReservedVehicleRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'sid.required' => 'The Stock ID is required.',
-            'sid.exists' => 'The stock does not exist.',
+            'stock_id.required' => 'The Stock ID is required.',
+            'stock_id.exists' => 'The stock does not exist.',
 
             'cnf.required' => 'CNF amount is required.',
             'cnf.numeric' => 'CNF amount should be valid numbers.',
