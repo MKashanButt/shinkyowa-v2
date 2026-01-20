@@ -40,7 +40,10 @@ class PaymentController extends Controller
         $customerAccounts = CustomerAccount::when(Auth::user()->hasPermission('view_team_reserved_vehicles'), function ($query) {
             $managerAgentIds = User::where('manager_id', Auth::id())
                 ->whereHas('role', fn($r) => $r->where('name', 'agent'))
-                ->pluck('id');
+                ->pluck('id')
+                ->toArray();
+
+            $managerAgentIds[] = Auth::id();
 
             $query->whereIn('agent_id', $managerAgentIds);
         })
