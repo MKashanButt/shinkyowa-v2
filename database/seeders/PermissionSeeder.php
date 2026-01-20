@@ -80,18 +80,6 @@ class PermissionSeeder extends Seeder
 
         $permission->role()->attach([1]);
 
-        // Manager Only Permission
-        $permission = Permission::create([
-            'name' => 'view_team_customers',
-        ]);
-
-        $permission->role()->attach([2]);
-
-        $permission = Permission::create([
-            'name' => 'view_team_shipments',
-        ]);
-
-        $permission->role()->attach([2]);
 
         // Admin & Manager Only Permissions
         $permission = Permission::create([
@@ -143,12 +131,6 @@ class PermissionSeeder extends Seeder
         $permission->role()->attach([1, 2]);
 
         $permission = Permission::create([
-            'name' => 'view_team_reserved_vehicles',
-        ]);
-
-        $permission->role()->attach([1, 2]);
-
-        $permission = Permission::create([
             'name' => 'can_edit_payment',
         ]);
 
@@ -157,6 +139,24 @@ class PermissionSeeder extends Seeder
         // Manager Only Permissions
         $permission = Permission::create([
             'name' => 'view_team_members',
+        ]);
+
+        $permission->role()->attach([2]);
+
+        $permission = Permission::create([
+            'name' => 'view_team_reserved_vehicles',
+        ]);
+
+        $permission->role()->attach([2]);
+
+        $permission = Permission::create([
+            'name' => 'view_team_customers',
+        ]);
+
+        $permission->role()->attach([2]);
+
+        $permission = Permission::create([
+            'name' => 'view_team_shipments',
         ]);
 
         $permission->role()->attach([2]);
