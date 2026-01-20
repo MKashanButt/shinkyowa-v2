@@ -196,6 +196,94 @@
                     </table>
                 </div>
             </div>
+            <!-- Vehicle Documents Section -->
+            <div class="border-b border-gray-200 px-6 py-4">
+                <h2 class="w-full bg-gray-200/50 my-2 p-2 border-l-2 border-blue-900 text-lg font-medium">Vehicle
+                    Documents</h2>
+                <div class="mt-4 overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
+                                    Stock Id</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
+                                    Japanese Export</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
+                                    English Export</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
+                                    Final Invoice</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
+                                    Inspection Certificate</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
+                                    BL Copy</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            @forelse($customerAccount->payment as $payment)
+                                @if($payment->stock && $payment->stock->documents->count())
+                                    @foreach($payment->stock->documents as $document)
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-xs">
+                                                <a href="{{ route('stock.show', $stock) }}">
+                                                    {{ 'SKI-' . $payment->stock->sid }}
+                                                </a>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-xs">
+                                                @if ($document->japanese_export)
+                                                    <a href="{{ asset('storage/' . $document->japanese_export) }}" target="__blank">
+                                                        <img src="{{ asset('icons/pdf.png') }}" class="w-12 h-12">
+                                                    </a>
+                                                @endif
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-xs">
+                                                @if ($document->english_export)
+                                                    <a href="{{ asset('storage/' . $document->english_export) }}" target="__blank">
+                                                        <img src="{{ asset('icons/pdf.png') }}" class="w-12 h-12">
+                                                    </a>
+                                                @endif
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-xs">
+                                                @if ($document->final_invoice)
+                                                    <a href="{{ asset('storage/' . $document->final_invoice) }}" target="__blank">
+                                                        <img src="{{ asset('icons/pdf.png') }}" class="w-12 h-12">
+                                                    </a>
+                                                @endif
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-xs">
+                                                @if ($document->inspection_certificate)
+                                                    <a href="{{ asset('storage/' . $document->inspection_certificate) }}"
+                                                        target="__blank">
+                                                        <img src="{{ asset('icons/pdf.png') }}" class="w-12 h-12">
+                                                    </a>
+                                                @endif
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-xs">
+                                                @if ($document->bl_copy)
+                                                    <a href="{{ asset('storage/' . $document->bl_copy) }}" target="__blank">
+                                                        <img src="{{ asset('icons/pdf.png') }}" class="w-12 h-12">
+                                                    </a>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+                            @empty
+                                <tr>
+                                    <td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">
+                                        No payment history found
+                                    </td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
             <!-- Payment History Section -->
             <div class="border-b border-gray-200 px-6 py-4">
@@ -252,7 +340,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm">
                                         <span
                                             class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    {{ $payment->status == 'approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            {{ $payment->status == 'approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
                                             {{ ucfirst($payment->status) }}
                                         </span>
                                     </td>
