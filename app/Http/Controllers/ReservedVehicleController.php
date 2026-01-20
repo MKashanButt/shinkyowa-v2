@@ -17,7 +17,7 @@ class ReservedVehicleController extends Controller
             ->whereNotNull('customer_account_id')
             ->when(Auth::user()->hasPermission('view_team_reserved_vehicles'), function ($query) {
                 $managerAgentIds = User::where('manager_id', Auth::id())
-                    ->where('role', 'agent')
+                    ->whereHas('role', fn($r) => $r->where('name', 'agent'))
                     ->pluck('id');
 
                 $managerAgentIds[] = Auth::id();
