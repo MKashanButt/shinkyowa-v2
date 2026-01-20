@@ -44,6 +44,8 @@
                         <th class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
                             Model</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
+                            Chassis</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
                             Year</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
                             Price</th>
@@ -70,6 +72,7 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-xs">{{ $data['make']->name }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-xs">{{ $data['model'] }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-xs">{{ $data['chassis'] }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-xs">{{ $data['year'] }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-xs">
                                 {{ $data['currency']->symbol . $data['fob'] }}
