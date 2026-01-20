@@ -119,7 +119,7 @@ class CustomerAccountController extends Controller
             'country:id,name',
             'agent:id,name',
             'stock' => function ($query) use ($id) {
-                $query->with('make', 'currency', 'shipment', 'payment')
+                $query->with('make', 'currency', 'shipment', 'payment', 'document')
                     ->where('customer_account_id', $id)
                     ->orderBy('created_at', 'desc');
             },
@@ -127,7 +127,6 @@ class CustomerAccountController extends Controller
                 $query->with([
                     'stock' => function ($q) {
                         $q->with([
-                            'document',
                             'make',
                             'currency',
                             'shipment',
