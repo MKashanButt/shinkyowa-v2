@@ -61,7 +61,7 @@ class ReservedVehicleController extends Controller
         $validated = $request->validated();
 
         try {
-            Stock::where('sid', $validated['sid'])
+            Stock::where('sid', $validated['stock_id'])
                 ->update([
                     'customer_account_id' => $validated['customer_account_id'],
                     'cnf' => $validated['cnf']
