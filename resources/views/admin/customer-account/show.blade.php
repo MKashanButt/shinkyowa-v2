@@ -225,55 +225,55 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-                            @forelse($customerAccount->payment as $payment)
-                                @dd($customerAccount->payment->stock->document)
-                                @if($payment->stock && $payment->stock->document->count())
-                                    @foreach($payment->stock->document as $document)
-                                        <tr>
-                                            <td class="px-6 py-4 whitespace-nowrap text-xs">
-                                                <a href="{{ route('stock.show', $stock) }}">
-                                                    {{ 'SKI-' . $payment->stock->sid }}
+                            @forelse($customerAccount->stock as $stock)
+                                @foreach($stock->documents as $document)
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-xs">
+                                            {{ 'SKI-' . $stock->sid }}
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-nowrap text-xs">
+                                            @if ($document->japanese_export)
+                                                <a href="{{ asset('storage/' . $document->japanese_export) }}" target="__blank">
+                                                    <img src="{{ asset('icons/pdf.png') }}" class="w-12 h-12">
                                                 </a>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-xs">
-                                                @if ($document->japanese_export)
-                                                    <a href="{{ asset('storage/' . $document->japanese_export) }}" target="__blank">
-                                                        <img src="{{ asset('icons/pdf.png') }}" class="w-12 h-12">
-                                                    </a>
-                                                @endif
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-xs">
-                                                @if ($document->english_export)
-                                                    <a href="{{ asset('storage/' . $document->english_export) }}" target="__blank">
-                                                        <img src="{{ asset('icons/pdf.png') }}" class="w-12 h-12">
-                                                    </a>
-                                                @endif
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-xs">
-                                                @if ($document->final_invoice)
-                                                    <a href="{{ asset('storage/' . $document->final_invoice) }}" target="__blank">
-                                                        <img src="{{ asset('icons/pdf.png') }}" class="w-12 h-12">
-                                                    </a>
-                                                @endif
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-xs">
-                                                @if ($document->inspection_certificate)
-                                                    <a href="{{ asset('storage/' . $document->inspection_certificate) }}"
-                                                        target="__blank">
-                                                        <img src="{{ asset('icons/pdf.png') }}" class="w-12 h-12">
-                                                    </a>
-                                                @endif
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-xs">
-                                                @if ($document->bl_copy)
-                                                    <a href="{{ asset('storage/' . $document->bl_copy) }}" target="__blank">
-                                                        <img src="{{ asset('icons/pdf.png') }}" class="w-12 h-12">
-                                                    </a>
-                                                @endif
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @endif
+                                            @endif
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-nowrap text-xs">
+                                            @if ($document->english_export)
+                                                <a href="{{ asset('storage/' . $document->english_export) }}" target="__blank">
+                                                    <img src="{{ asset('icons/pdf.png') }}" class="w-12 h-12">
+                                                </a>
+                                            @endif
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-nowrap text-xs">
+                                            @if ($document->final_invoice)
+                                                <a href="{{ asset('storage/' . $document->final_invoice) }}" target="__blank">
+                                                    <img src="{{ asset('icons/pdf.png') }}" class="w-12 h-12">
+                                                </a>
+                                            @endif
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-nowrap text-xs">
+                                            @if ($document->inspection_certificate)
+                                                <a href="{{ asset('storage/' . $document->inspection_certificate) }}"
+                                                    target="__blank">
+                                                    <img src="{{ asset('icons/pdf.png') }}" class="w-12 h-12">
+                                                </a>
+                                            @endif
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-nowrap text-xs">
+                                            @if ($document->bl_copy)
+                                                <a href="{{ asset('storage/' . $document->bl_copy) }}" target="__blank">
+                                                    <img src="{{ asset('icons/pdf.png') }}" class="w-12 h-12">
+                                                </a>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
                             @empty
                                 <tr>
                                     <td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">
@@ -341,7 +341,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm">
                                         <span
                                             class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                {{ $payment->status == 'approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    {{ $payment->status == 'approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
                                             {{ ucfirst($payment->status) }}
                                         </span>
                                     </td>
