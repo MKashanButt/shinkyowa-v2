@@ -111,7 +111,7 @@
                     <div class="flex items-start gap-2">
                         <dt class="w-[32%] font-semibold">Remaining Balance</dt>
                         <dd
-                            class="w-4/5 {{ $customerAccount->buying - $customerAccount->deposit < 0 ? 'text-red-700' : 'text-green-700' }}">
+                            class="w-4/5 {{ $customerAccount->buying > $customerAccount->deposit ? 'text-red-700' : 'text-green-700' }}">
                             {{ number_format($customerAccount->buying - $customerAccount->deposit, 2) . ' ' . $customerAccount->currency->code ?? '$' }}
                         </dd>
                     </div>
@@ -341,7 +341,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm">
                                         <span
                                             class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        {{ $payment->status == 'approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            {{ $payment->status == 'approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
                                             {{ ucfirst($payment->status) }}
                                         </span>
                                     </td>
