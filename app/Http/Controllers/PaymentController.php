@@ -58,7 +58,6 @@ class PaymentController extends Controller
             })
             ->pluck('name', 'id');
 
-
         return view('admin.payment.create', compact('customerAccounts'));
     }
 
