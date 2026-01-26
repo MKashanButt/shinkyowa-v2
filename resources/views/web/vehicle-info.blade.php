@@ -129,6 +129,14 @@
                         </div>
                         <div class="col flex">
                             <div class="row">
+                                <p>Color</p>
+                            </div>
+                            <div class="row">
+                                <p>{{ $vehicle['color'] ?? 'NA' }}</p>
+                            </div>
+                        </div>
+                        <div class="col flex">
+                            <div class="row">
                                 <p>Country</p>
                             </div>
                             <div class="row">
