@@ -27,6 +27,7 @@ class Stock extends Model
         'fuel',
         'category_id',
         'country_id',
+        'color',
         'features',
         'customer_account_id',
         'agent_id',
