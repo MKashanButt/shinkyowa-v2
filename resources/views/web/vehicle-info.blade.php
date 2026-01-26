@@ -132,7 +132,7 @@
                                 <p>Color</p>
                             </div>
                             <div class="row">
-                                <p>{{ $vehicle['color'] ?? 'NA' }}</p>
+                                <p>{{ $vehicle['color'] ?? 'N/A' }}</p>
                             </div>
                         </div>
                         <div class="col flex">
