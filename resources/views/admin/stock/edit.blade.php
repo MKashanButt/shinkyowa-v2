@@ -105,6 +105,13 @@
                             value="{{ old('year', $stock['year']) }}" required />
                         <x-input-error :messages="$errors->get('year')" class="mt-2" />
                     </div>
+                    <div class="flex items-center gap-2">
+                        <x-input-label for="color"
+                            class="w-[32%] after:content-['*'] after:text-red-500">Color</x-input-label>
+                        <x-text-input type="text" id="color" name="color" class="w-4/5"
+                            value="{{ old('stock', $stock['stock']) }}" required />
+                        <x-input-error :messages="$errors->get('color')" class="mt-2" />
+                    </div>
                 </div>
             </div>
             <div>
