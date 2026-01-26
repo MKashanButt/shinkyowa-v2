@@ -65,6 +65,10 @@
                         <dt class="text-sm font-medium text-gray-500">Year</dt>
                         <dd class="mt-1 text-sm text-gray-900">{{ $stock['year'] }}</dd>
                     </div>
+                    <div class="py-2">
+                        <dt class="text-sm font-medium text-gray-500">Color</dt>
+                        <dd class="mt-1 text-sm text-gray-900">{{ $stock['color'] ?? 'N/A' }}</dd>
+                    </div>
                 </dl>
             </div>
 
