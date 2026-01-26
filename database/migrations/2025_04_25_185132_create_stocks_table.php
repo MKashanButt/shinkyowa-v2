@@ -56,6 +56,8 @@ return new class extends Migration
                 ->nullable()
                 ->constrained('countries')
                 ->onDelete('set null');
+            $table->string('color')
+                ->nullable();
             $table->text('features');
             $table->foreignId('customer_account_id')
                 ->nullable()
