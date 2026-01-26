@@ -33,6 +33,7 @@ class StoreStockRequest extends FormRequest
             'chassis' => 'required|string|max:255|unique:stocks,chassis',
             'make_id' => 'required|exists:makes,id',
             'model' => 'required|string|max:255',
+            'color' => 'required|string|max:255',
             'year' => 'required|integer|min:1900|max:' . (date('Y') + 1),
 
             // Pricing & Location Section
@@ -73,6 +74,7 @@ class StoreStockRequest extends FormRequest
             'chassis.required' => 'The chassis number is required.',
             'chassis.unique' => 'This chassis number already exists in our system.',
             'make_id.required' => 'Please select a vehicle make.',
+            'color.required' => 'Please add vehicle color.',
             'year.min' => 'The year must be at least 1900.',
             'year.max' => 'The year may not be greater than current year + 1.',
 
