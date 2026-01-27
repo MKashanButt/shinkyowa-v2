@@ -24,20 +24,22 @@ class UpdateCustomerAccountRequest extends FormRequest
      */
     public function rules(): array
     {
-        $customerAccountId = $this->customer_account->id;
+        $customerAccount   = $this->customer_account;
+        $customerUserId    = $customerAccount->user_id;
+        $customerRoleId   = Role::where('name', 'customer')->value('id');
 
         return [
             'name'        => ['required', 'string', 'max:100'],
             'company'     => ['required', 'string', 'max:200'],
-            'email'       => [
+            'email' => [
                 'required',
                 'email',
                 'max:150',
-                Rule::unique('customer_accounts')->ignore($customerAccountId),
+                Rule::unique('customer_accounts', 'email')
+                    ->ignore($customerAccount->id),
                 Rule::unique('users', 'email')
-                    ->where(fn($q) => $q->where('role_id', Role::where('name', 'customer')
-                        ->value('id')))
-                    ->ignore($customerAccountId)
+                    ->where(fn($q) => $q->where('role_id', $customerRoleId))
+                    ->ignore($customerUserId),
             ],
             'phone'       => ['required', 'string', 'max:15', 'regex:/^[0-9+\-\s()]+$/'],
             'whatsapp'    => ['required', 'string', 'max:15', 'regex:/^[0-9+\-\s()]+$/'],
