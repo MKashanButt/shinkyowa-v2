@@ -85,7 +85,7 @@
 }
 
 .second-sidebar .vehicle-of-day {
-    height: 208px !important;
+    height: 240px !important;
     position: relative;
     font-size: 12px;
     margin-bottom: 20px;
@@ -117,7 +117,7 @@
 }
 
 .second-sidebar .vehicle-of-day .stage .item img {
-    width: 57%;
+    width: 100%;
 }
 
 .second-sidebar .vehicle-of-day .stage .item button,
