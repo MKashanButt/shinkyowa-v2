@@ -19,6 +19,16 @@ class CustomerAccountController extends Controller
 {
     public function index()
     {
+        $perPage = request('per_page', 8);
+
+        if ($perPage == 'all') {
+            $perPage = max(1, min(CustomerAccount::count(), 100));
+        } else {
+            $perPage = (int) $perPage;
+            $perPage = max(1, min($perPage, 25));
+            $accounts = CustomerAccount::paginate($perPage);
+        }
+
         $accounts = CustomerAccount::with(['currency', 'agent'])
             ->addSelect([
                 'buying' => Stock::selectRaw('COALESCE(SUM(fob), 0)')
@@ -42,7 +52,7 @@ class CustomerAccountController extends Controller
                 $query->where('agent_id', Auth::id());
             })
             ->orderBy('id', 'DESC')
-            ->paginate(10);
+            ->paginate($perPage);
 
         return view('admin.customer-account.index', compact('accounts'));
     }
