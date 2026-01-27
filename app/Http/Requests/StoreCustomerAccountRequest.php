@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 
 class StoreCustomerAccountRequest extends FormRequest
 {
@@ -26,14 +25,14 @@ class StoreCustomerAccountRequest extends FormRequest
         return [
             'name'        => ['required', 'string', 'max:100'],
             'company'     => ['required', 'string', 'max:200'],
-            'email'       => ['required', 'email', 'max:150', Rule::unique('customers', 'email')->ignore($this->customer)],
+            'email'       => ['required', 'email', 'max:150'],
             'phone'       => ['required', 'string', 'max:15', 'regex:/^[0-9+\-\s()]+$/'],
             'whatsapp'    => ['required', 'string', 'max:15', 'regex:/^[0-9+\-\s()]+$/'],
             'password'    => ['required', 'string', 'min:6'],
             'description' => ['nullable', 'string', 'max:244'],
             'address'     => ['required', 'string', 'max:244'],
             'city'        => ['required', 'string', 'max:244'],
-            'country_id'     => ['required', 'string'],
+            'country_id'  => ['required', 'string'],
             'currency_id' => ['required', 'string'],
             'agent_id'    => ['nullable', 'string'],
         ];
