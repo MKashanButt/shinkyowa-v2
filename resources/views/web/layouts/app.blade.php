@@ -343,7 +343,7 @@
             <p>Sitemap - Terms - Privacy Policy - Shipping Schedule - Disclaimer</p>
         </div>
     </footer>
-    <a href="https://wa.me/817015241308" target="__blank">
+    <a href="https://wa.me/817074270468" target="__blank">
         <button class="whatsapp">
             <i class='bx bxl-whatsapp'></i>
         </button>
