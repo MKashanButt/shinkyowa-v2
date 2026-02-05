@@ -98,15 +98,15 @@ class StoreDocumentRequest extends FormRequest
             'stock_id.exists' => 'The selected stock ID is invalid.',
             'documents.required' => 'At least one document must be uploaded.',
             'japanese_export.mimes' => 'Japanese export must be a PDF, JPG, JPEG, or PNG file.',
-            'japanese_export.max' => 'Japanese export file must not exceed 2MB.',
+            'japanese_export.max' => 'Japanese export file must not exceed 5MB.',
             'english_export.mimes' => 'English export must be a PDF, JPG, JPEG, or PNG file.',
-            'english_export.max' => 'English export file must not exceed 2MB.',
+            'english_export.max' => 'English export file must not exceed 5MB.',
             'final_invoice.mimes' => 'Final invoice must be a PDF, JPG, JPEG, or PNG file.',
-            'final_invoice.max' => 'Final invoice file must not exceed 2MB.',
+            'final_invoice.max' => 'Final invoice file must not exceed 5MB.',
             'inspection_certificate.mimes' => 'Inspection certificate must be a PDF, JPG, JPEG, or PNG file.',
-            'inspection_certificate.max' => 'Inspection certificate file must not exceed 2MB.',
+            'inspection_certificate.max' => 'Inspection certificate file must not exceed 5MB.',
             'bl_copy.mimes' => 'BL copy must be a PDF, JPG, JPEG, or PNG file.',
-            'bl_copy.max' => 'BL copy file must not exceed 2MB.',
+            'bl_copy.max' => 'BL copy file must not exceed 5MB.',
         ];
     }
 
