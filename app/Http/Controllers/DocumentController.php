@@ -31,6 +31,8 @@ class DocumentController extends Controller
     {
         $validated = $request->validated();
 
+        $validated['stock_id'] = Stock::where('sid', $validated['stock_id'])->value('id');
+
         $fileFields = [
             'japanese_export',
             'english_export',
