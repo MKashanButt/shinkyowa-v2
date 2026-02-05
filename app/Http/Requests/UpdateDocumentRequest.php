@@ -26,37 +26,37 @@ class UpdateDocumentRequest extends FormRequest
             'stock_id' => [
                 'required',
                 'integer',
-                Rule::exists('stocks', 'id')
+                Rule::exists('stocks', 'sid')
             ],
             'japanese_export' => [
                 'nullable',
                 'file',
                 'mimes:pdf,jpg,jpeg,png',
-                'max:2048'
+                'max:5120'
             ],
             'english_export' => [
                 'nullable',
                 'file',
                 'mimes:pdf,jpg,jpeg,png',
-                'max:2048'
+                'max:5120'
             ],
             'final_invoice' => [
                 'nullable',
                 'file',
                 'mimes:pdf,jpg,jpeg,png',
-                'max:2048'
+                'max:5120'
             ],
             'inspection_certificate' => [
                 'nullable',
                 'file',
                 'mimes:pdf,jpg,jpeg,png',
-                'max:2048'
+                'max:5120'
             ],
             'bl_copy' => [
                 'nullable',
                 'file',
                 'mimes:pdf,jpg,jpeg,png',
-                'max:2048'
+                'max:5120'
             ],
         ];
     }
