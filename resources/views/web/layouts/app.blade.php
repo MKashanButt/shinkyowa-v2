@@ -23,7 +23,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    @stack('js')
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4DTP9C1YC"></script>
@@ -122,17 +121,17 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <a href="/stock">
-                        <img src="{{ env('IMAGE_API_URL') . 'images/banner-one.png' }}" alt="slider-image" loading="lazy">
+                        <x-img src="{{ env('IMAGE_API_URL') . 'images/banner-one.png' }}" alt="slider-image" />
                     </a>
                 </div>
                 <div class="swiper-slide">
                     <a href="/filter?make=toyota&model=hilux&year=2024">
-                        <img src="{{ env('IMAGE_API_URL') . 'images/banner-two.png' }}" alt="slider-image" loading="lazy">
+                        <x-img src="{{ env('IMAGE_API_URL') . 'images/banner-two.png' }}" alt="slider-image" />
                     </a>
                 </div>
                 <div class="swiper-slide">
                     <a href="/filter?make=honda&model=crv">
-                        <img src="{{ env('IMAGE_API_URL') . 'images/banner-three.png' }}" alt="slider-image" loading="lazy">
+                        <x-img src="{{ env('IMAGE_API_URL') . 'images/banner-three.png' }}" alt="slider-image" />
                     </a>
                 </div>
             </div>
@@ -363,42 +362,8 @@
             </form>
         </div>
     </dialog>
+    @stack('js')
     <script src="{{ asset('js/app.js') }}"></script>
-    @if (Request::is('/'))
-        <script>
-            var swiper = new Swiper(".mySwiper", {
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                autoplay: {
-                    delay: 2000,
-                    disableOnInteraction: false,
-                },
-            });
-        </script>
-    @endif
-    <script>
-        var swiper = new Swiper(".mySwiper1", {
-            loop: true,
-            spaceBetween: 10,
-            slidesPerView: 4,
-            clickable: true,
-            freemode: true,
-            watchSlidesProgress: true,
-        });
-        var swiper2 = new Swiper(".mySwiper2", {
-            loop: true,
-            thumbs: {
-                swiper: swiper,
-            },
-            autoplay: true,
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        });
-    </script>
 </body>
 
 </html>
