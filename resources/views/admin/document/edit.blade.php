@@ -17,15 +17,12 @@
                     <div class="flex items-center gap-2">
                         <x-input-label for="stock_id" class="w-[32%] after:content-['*'] after:text-red-500">Stock
                             Id</x-input-label>
-                        <x-select-box id="stock_id" name="stock_id" class="w-4/5">
-                            <option value="">Select Stock Id</option>
-                            @foreach ($stocks as $key => $item)
-                                <option value="{{ $key }}"
-                                    {{ old('stock_id', $document->stock_id) == $key ? 'selected' : '' }}>
-                                    {{ 'SKI-' . $item }}
-                                </option>
-                            @endforeach
-                        </x-select-box>
+                        <div class="w-4/5 flex gap-1">
+                            <x-pill>SKI-</x-pill>
+                            <x-text-input type="text" id="stock_id" name="stock_id" class="flex-1"
+                                value="{{ old('stock_id', $stock) }}"
+                                placeholder="Enter Stock Id number with no preceding zero's" />
+                        </div>
                         <x-input-error :messages="$errors->get('stock_id')" class="mt-2" />
                     </div>
 
@@ -102,8 +99,8 @@
                         <div class="w-4/5">
                             @if ($document->inspection_certificate)
                                 <div class="mb-2 flex items-center">
-                                    <a href="{{ asset('storage/' . $document->inspection_certificate) }}"
-                                        target="_blank" class="text-blue-600 hover:underline mr-2">
+                                    <a href="{{ asset('storage/' . $document->inspection_certificate) }}" target="_blank"
+                                        class="text-blue-600 hover:underline mr-2">
                                         View Current File
                                     </a>
                                     <x-input-label for="inspection_certificate" class="text-sm cursor-pointer">
