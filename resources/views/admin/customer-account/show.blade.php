@@ -121,58 +121,58 @@
                 <h2 class="w-full bg-gray-200/50 my-2 p-2 border-l-2 border-blue-900 text-lg font-medium">Reserved
                     Vehicles</h2>
                 <div class="mt-4 overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200">
+                    <table class="min-w-full divide-y divide-gray-400">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-medium font-semibold uppercase tracking-wider">
                                     Stock ID</th>
                                 <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-medium font-semibold uppercase tracking-wider">
                                     Make</th>
                                 <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-medium font-semibold uppercase tracking-wider">
                                     Model</th>
                                 <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-medium font-semibold uppercase tracking-wider">
                                     Year</th>
                                 <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-medium font-semibold uppercase tracking-wider">
                                     CNF Price</th>
                                 <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-medium font-semibold uppercase tracking-wider">
                                     Shipment</th>
                                 <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-medium font-semibold uppercase tracking-wider">
                                     Status</th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
+                        <tbody class="bg-white divide-y divide-gray-400">
                             @forelse($customerAccount->stock as $stock)
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-500">
                                         <a href="{{ route('stock.show', $stock) }}">
                                             SKI-{{ $stock->sid }}
                                         </a>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-500">
                                         {{ $stock->make->name ?? 'N/A' }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $stock->model }}
+                                    <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-500">{{ $stock->model }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $stock->year }}
+                                    <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-500">{{ $stock->year }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-500">
                                         {{ $customerAccount->currency->symbol ?? '$' }}{{ number_format($stock->cnf, 2) }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-500">
                                         <div class="flex flex-col gap-2">
                                             <p><b>Vessel:</b> {{ $stock->shipment->first()?->vessel_name }}</p>
                                             <p><b>ETA:</b> {{ $stock->shipment->first()?->eta }}</p>
                                             <p><b>ETD:</b> {{ $stock->shipment->first()?->etd }}</p>
                                         </div>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                    <td class="px-6 py-4 whitespace-nowrap text-xs">
                                         @if ($stock->getDepositAttribute() >= $stock->fob)
                                             <span
                                                 class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
@@ -188,7 +188,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">No reserved
+                                    <td colspan="6" class="px-6 py-4 text-center text-xs text-gray-500">No reserved
                                         vehicles found</td>
                                 </tr>
                             @endforelse
@@ -201,30 +201,24 @@
                 <h2 class="w-full bg-gray-200/50 my-2 p-2 border-l-2 border-blue-900 text-lg font-medium">Vehicle
                     Documents</h2>
                 <div class="mt-4 overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200">
+                    <table class="min-w-full divide-y divide-gray-400">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
+                                <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">
                                     Stock Id</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
+                                <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">
                                     Japanese Export</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
+                                <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">
                                     English Export</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
+                                <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">
                                     Final Invoice</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
+                                <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">
                                     Inspection Certificate</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
+                                <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">
                                     BL Copy</th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
+                        <tbody class="bg-white divide-y divide-gray-400">
                             @forelse($customerAccount->stock as $stock)
                                 @foreach($stock->document as $document)
                                     <tr>
@@ -276,7 +270,7 @@
                                 @endforeach
                             @empty
                                 <tr>
-                                    <td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">
+                                    <td colspan="6" class="px-6 py-4 text-center text-xs text-gray-500">
                                         No documents found
                                     </td>
                                 </tr>
@@ -291,64 +285,58 @@
                 <h2 class="w-full bg-gray-200/50 my-2 p-2 border-l-2 border-blue-900 text-lg font-medium">Payment
                     History</h2>
                 <div class="mt-4 overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200">
+                    <table class="min-w-full divide-y divide-gray-400">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">
                                     Date</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">
                                     Description</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">
                                     Amount</th>
                                 @if (!Auth::user()->hasRole('customer'))
-                                    <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">
                                         YEN Amount</th>
                                 @endif
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">
                                     Received Date</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">
                                     Status</th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
+                        <tbody class="bg-white divide-y divide-gray-400">
                             @forelse($customerAccount->payment as $payment)
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-500">
                                         {{ $payment->payment_date }}
                                     </td>
-                                    <td class="px-6 py-4 text-sm text-gray-500">
+                                    <td class="px-6 py-4 text-xs text-gray-500">
                                         <span title="{{ $payment->description }}">
                                             {{ Str::limit($payment->description, 20) }}
                                         </span>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-500">
                                         {{ $customerAccount->currency->symbol . number_format($payment->amount, 2) }}
                                     </td>
                                     @if (!Auth::user()->hasRole('customer'))
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-500">
                                             ¥{{ number_format($payment->in_yen, 2) }}
                                         </td>
                                     @endif
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-500">
                                         {{ $payment->payment_recieved_date }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                    <td class="px-6 py-4 whitespace-nowrap text-xs">
                                         <span
                                             class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            {{ $payment->status == 'approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    {{ $payment->status == 'approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
                                             {{ ucfirst($payment->status) }}
                                         </span>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">No payment
+                                    <td colspan="6" class="px-6 py-4 text-center text-xs text-gray-500">No payment
                                         history found</td>
                                 </tr>
                             @endforelse
