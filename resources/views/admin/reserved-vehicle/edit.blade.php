@@ -16,12 +16,14 @@
                     <div class="flex items-center gap-2">
                         <x-input-label for="sid" class="w-[32%] after:content-['*'] after:text-red-500">Stock
                             Id</x-input-label>
-                        <div class="w-4/5 flex gap-1">
-                            <x-pill>SKI-</x-pill>
-                            <x-text-input type="text" id="sid" name="sid" class="flex-1"
-                                value="{{ old('sid', $stock) }}"
-                                placeholder="Enter Stock Id number with no preceding zero's" />
-                        </div>
+                        <x-select-box name="sid" id="sid" class="w-4/5" required>
+                            <option value="">Select Stocks</option>
+                            @foreach ($stocks as $key => $item)
+                                <option value="{{ $key }}" {{ old('sid', $reserved['sid']) == $key ? 'selected' : '' }}>
+                                    {{ $item }}
+                                </option>
+                            @endforeach
+                        </x-select-box>
                         <x-input-error :messages="$errors->get('sid')" class="mt-2" />
                     </div>
                     <div class="flex items-center gap-2">
