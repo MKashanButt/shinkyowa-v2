@@ -8,7 +8,8 @@
                         @foreach ($vehicleOfDay as $item)
                             <div class="swiper-slide">
                                 <a href="/vehicle-info/{{ $item['id'] }}">
-                                    <img src="{{ env('STOCK_IMG_LINK') . $item['thumbnail'] }}" alt="vehicle-of-the-day">
+                                    <x-img src="{{ env('STOCK_IMG_LINK') . $item['thumbnail'] }}"
+                                        alt="vehicle-of-the-day" />
                                     <p>{{ strtoupper($item['make']['name']) . ' / ' . strtoupper($item['model']) . ' ' . $item['year'] }}
                                     </p>
                                     <span>Stock No. SKI-{{ str_pad($item['sid'], 2, '0', STR_PAD_LEFT) }}</span>
@@ -23,12 +24,15 @@
     </div>
     <hr>
     <div class="offers">
-        <a href="/stock"><img src="{{ env('IMAGE_API_URL') . 'images/offers/offer-one.gif' }}" loading="lazy"
-                alt=""></a>
-        <a href="/stock"><img src="{{ env('IMAGE_API_URL') . 'images/offers/offer-two.gif' }}" loading="lazy"
-                alt=""></a>
-        <a href="/filter?yearfrom=2024"><img src="{{ env('IMAGE_API_URL') . 'images/offers/offer-three.gif' }}"
-                loading="lazy" alt=""></a>
+        <a href="/stock">
+            <x-img src="{{ env('IMAGE_API_URL') . 'images/offers/offer-one.gif' }}" />
+        </a>
+        <a href="/stock">
+            <x-img src="{{ env('IMAGE_API_URL') . 'images/offers/offer-two.gif' }}" />
+        </a>
+        <a href="/filter?yearfrom=2024">
+            <x-img src="{{ env('IMAGE_API_URL') . 'images/offers/offer-three.gif' }}" />
+        </a>
     </div>
     <hr>
 </aside>
