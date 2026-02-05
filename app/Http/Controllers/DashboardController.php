@@ -16,7 +16,7 @@ class DashboardController extends Controller
     {
         $accounts = CustomerAccount::with(['currency', 'agent'])
             ->addSelect([
-                'buying' => Stock::selectRaw('COALESCE(SUM(fob), 0)')
+                'buying' => Stock::selectRaw('COALESCE(SUM(cnf), 0)')
                     ->whereColumn('customer_account_id', 'customer_accounts.id'),
 
                 'deposit' => Payment::selectRaw('COALESCE(SUM(amount), 0)')
