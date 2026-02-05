@@ -47,4 +47,9 @@ class CustomerAccount extends Model
     {
         return $this->hasMany(Payment::class);
     }
+
+    public function point(): HasMany
+    {
+        return $this->hasMany(Point::class);
+    }
 }
