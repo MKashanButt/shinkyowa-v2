@@ -41,7 +41,7 @@ class ClientDashboardController extends Controller
             }
         ]);
 
-        $customerAccount->buying = $customerAccount->stock->sum('fob');
+        $customerAccount->buying = $customerAccount->stock->sum('cnf');
         $customerAccount->deposit = $customerAccount->payment->sum('amount');
 
         $customerAccount->remaining_balance = $customerAccount->buying - $customerAccount->deposit;
