@@ -57,7 +57,7 @@ class DocumentController extends Controller
 
     public function edit(Document $document)
     {
-        $stock = Stock::findOrFail($document->stock_id)->value('sid');
+        $stock = Stock::findOrFail($document->stock_id)->sid;
 
         return view('admin.document.edit', compact('document', 'stock'));
     }
