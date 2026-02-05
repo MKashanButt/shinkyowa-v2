@@ -57,14 +57,16 @@ class DocumentController extends Controller
 
     public function edit(Document $document)
     {
-        $stocks = Stock::pluck('id', 'sid');
+        $stoc = Stock::findOrFail($document->stockc_id)->value('sid');
 
-        return view('admin.document.edit', compact('document', 'stocks'));
+        return view('admin.document.edit', compact('document', 'stock'));
     }
 
     public function update(UpdateDocumentRequest $request, Document $document)
     {
         $validated = $request->validated();
+
+        $validated['stock_id'] = Stock::where('sid', $validated['stock_id'])->value('id');
 
         foreach (['japanese_export', 'english_export', 'final_invoice', 'inspection_certificate', 'bl_copy'] as $field) {
             if ($request->hasFile($field)) {
