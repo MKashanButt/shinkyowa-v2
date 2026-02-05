@@ -13,7 +13,7 @@
         <div class="w-full h-[70vh] overflow-y-scroll bg-white rounded-lg shadow overflow-hidden">
             <!-- Basic Information Section -->
             <div class="border-b border-gray-200 px-6 py-4">
-                <h2 class="w-full bg-gray-200/50 my-2 p-2 border-l-2 border-blue-900 text-lg font-medium">Basic
+                <h2 class="w-full bg-blue-900 my-2 p-2 text-lg font-medium text-white">Basic
                     Information</h2>
                 <dl class="grid grid-cols-3 gap-4 mt-4">
                     <div class="flex items-start gap-2">
@@ -55,7 +55,7 @@
 
             <!-- Address Section -->
             <div class="border-b border-gray-200 px-6 py-4">
-                <h2 class="w-full bg-gray-200/50 my-2 p-2 border-l-2 border-blue-900 text-lg font-medium">Address</h2>
+                <h2 class="w-full bg-blue-900 my-2 p-2 text-lg font-medium text-white">Address</h2>
                 <dl class="grid grid-cols-3 gap-4 mt-4">
                     <div class="flex items-start gap-2">
                         <dt class="w-[32%] font-semibold">Address</dt>
@@ -74,7 +74,7 @@
 
             <!-- Admin Section -->
             <div class="border-b border-gray-200 px-6 py-4">
-                <h2 class="w-full bg-gray-200/50 my-2 p-2 border-l-2 border-blue-900 text-lg font-medium">Admin</h2>
+                <h2 class="w-full bg-blue-900 my-2 p-2 text-lg font-medium text-white">Admin</h2>
                 <dl class="flex gap-4 flex-wrap mt-4">
                     <div class="flex items-start gap-2 w-[32.5%]">
                         <dt class="w-[32%] font-semibold">Agent</dt>
@@ -93,7 +93,7 @@
 
             <!-- Financial Summary Section -->
             <div class="border-b border-gray-200 px-6 py-4">
-                <h2 class="w-full bg-gray-200/50 my-2 p-2 border-l-2 border-blue-900 text-lg font-medium">Financial
+                <h2 class="w-full bg-blue-900 my-2 p-2 text-lg font-medium text-white">Financial
                     Summary</h2>
                 <dl class="grid grid-cols-3 gap-4 mt-4">
                     <div class="flex items-start gap-2">
@@ -118,7 +118,7 @@
                 </dl>
             </div>
             <div class="border-b border-gray-200 px-6 py-4">
-                <h2 class="w-full bg-gray-200/50 my-2 p-2 border-l-2 border-blue-900 text-lg font-medium">Reserved
+                <h2 class="w-full bg-blue-900 my-2 p-2 text-lg font-medium text-white">Reserved
                     Vehicles</h2>
                 <div class="mt-4 overflow-x-auto">
                     <table class="min-w-full divide-y divide-gray-400">
@@ -198,7 +198,7 @@
             </div>
             <!-- Vehicle Documents Section -->
             <div class="border-b border-gray-200 px-6 py-4">
-                <h2 class="w-full bg-gray-200/50 my-2 p-2 border-l-2 border-blue-900 text-lg font-medium">Vehicle
+                <h2 class="w-full bg-blue-900 my-2 p-2 text-lg font-medium text-white">Vehicle
                     Documents</h2>
                 <div class="mt-4 overflow-x-auto">
                     <table class="min-w-full divide-y divide-gray-400">
@@ -282,7 +282,8 @@
 
             <!-- Payment History Section -->
             <div class="border-b border-gray-200 px-6 py-4">
-                <h2 class="w-full bg-gray-200/50 my-2 p-2 border-l-2 border-blue-900 text-lg font-medium">Payment
+                <h2 class="w-full bg-blue-900 my-2 p-2 text-lg font-medium text-white">
+                    Payment
                     History</h2>
                 <div class="mt-4 overflow-x-auto">
                     <table class="min-w-full divide-y divide-gray-400">
@@ -329,7 +330,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-xs">
                                         <span
                                             class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    {{ $payment->status == 'approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                {{ $payment->status == 'approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
                                             {{ ucfirst($payment->status) }}
                                         </span>
                                     </td>
