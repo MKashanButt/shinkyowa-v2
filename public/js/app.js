@@ -43,3 +43,23 @@ function responsiveMenu() {
 if (window.innerWidth < 1007) {
     document.getElementById("menu").style.display = "none";
 }
+
+var swiper = new Swiper(".mySwiper1", {
+    loop: true,
+    spaceBetween: 10,
+    slidesPerView: 4,
+    clickable: true,
+    freemode: true,
+    watchSlidesProgress: true,
+});
+var swiper2 = new Swiper(".mySwiper2", {
+    loop: true,
+    thumbs: {
+        swiper: swiper,
+    },
+    autoplay: true,
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+});
