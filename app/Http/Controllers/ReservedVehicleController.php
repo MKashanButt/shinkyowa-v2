@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreReservedVehicleRequest;
 use App\Models\CustomerAccount;
+use App\Models\Point;
 use App\Models\Stock;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ReservedVehicleController extends Controller
 {
@@ -66,6 +68,11 @@ class ReservedVehicleController extends Controller
                     'customer_account_id' => $validated['customer_account_id'],
                     'cnf' => $validated['cnf']
                 ]);
+
+            Point::updateOrCreate(
+                ['customer_account_id' => $validated['customer_account_id']],
+                ['points' => DB::raw('points + 10')]
+            );
 
             return redirect()->route('reserved-vehicle.index')
                 ->with('success', 'Vehicle reserved successfully.');
@@ -126,9 +133,13 @@ class ReservedVehicleController extends Controller
     public function destroy($reserved)
     {
         try {
+            $cid = Stock::findOrFail($reserved)->customer_account_id;
+
             Stock::where('id', $reserved)
                 ->update(['customer_account_id' => null, 'cnf' => 0]);
 
+            Point::where('customer_account_id', $cid)
+                ->decrement('points', 10);
             return redirect()->route('reserved-vehicle.index')
                 ->with('success', 'Vehicle reservation cancelled successfully.');
         } catch (\Exception $e) {
