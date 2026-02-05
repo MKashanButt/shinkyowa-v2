@@ -16,14 +16,12 @@
                     <div class="flex items-center gap-2">
                         <x-input-label for="stock_id" class="w-[32%] after:content-['*'] after:text-red-500">Stock
                             Id</x-input-label>
-                        <x-select-box id="stock_id" name="stock_id" class="w-4/5">
-                            <option value="">Select Stock Id</option>
-                            @foreach ($stocks as $key => $item)
-                                <option value="{{ $key }}" {{ old('stock_id') == $key ? 'selected' : '' }}>
-                                    {{ 'SKI-' . $item }}
-                                </option>
-                            @endforeach
-                        </x-select-box>
+                        <div class="w-4/5 flex gap-1">
+                            <x-pill>SKI-</x-pill>
+                            <x-text-input type="text" id="stock_id" name="stock_id" class="flex-1"
+                                value="{{ old('stock_id') }}"
+                                placeholder="Enter Stock Id number with no preceding zero's" />
+                        </div>
                         <x-input-error :messages="$errors->get('stock_id')" class="mt-2" />
                     </div>
                     <div class="flex items-center gap-2">
@@ -38,8 +36,7 @@
                         <x-input-label for="english_export" class="w-[32%]">English Export</x-input-label>
                         <input
                             class="block w-4/5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
-                            id="english_export" type="file" name="english_export"
-                            value="{{ old('english_export') }}">
+                            id="english_export" type="file" name="english_export" value="{{ old('english_export') }}">
                         <x-input-error :messages="$errors->get('english_export')" class="mt-2" />
                     </div>
                     <div class="flex items-center gap-2">
