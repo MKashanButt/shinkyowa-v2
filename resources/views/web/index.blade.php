@@ -6,6 +6,21 @@
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 @endpush
 
+@push('js')
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+        });
+    </script>
+@endpush
+
 <x-web-layout :title="$title" :sidebar="true">
     <div class="tabs flex">
         <div class="option">
