@@ -70,6 +70,12 @@
                             {{ Auth::user()->role->name }}
                         </x-success-button>
                         <div x-data="{ open: false }" class="relative">
+                            @if (Auth::user()->hasRole('customer'))
+                                <span
+                                    class="mr-4 inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 inset-ring inset-ring-blue-700/10">Points:
+                                    {{ $points }}
+                                </span>
+                            @endif
                             <x-primary-button @click="open=!open">
                                 {{ Auth::user()->name }}
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
