@@ -14,28 +14,23 @@ class ShipmentController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
-
         $shipments = Shipment::with('stock')
-            ->when(true, function ($query) use ($user) {
-                if ($user->hasPermission('view_team_shipments')) {
-                    // Get IDs once before the query
-                    $agentIds = User::where('manager_id', $user->id)
-                        ->whereHas('role', fn($r) => $r->where('name', 'agent'))
-                        ->pluck('id')
-                        ->push($user->id); // cleaner than toArray and [] =
+            ->when(Auth::user()->hasPermission('view_team_shipments'), function ($query) {
+                $managerAgentIds = User::where('manager_id', Auth::id())
+                    ->whereHas('role', fn($r) => $r->where('name', 'agent'))
+                    ->pluck('id')
+                    ->toArray();
 
-                    return $query->whereIn('user_id', $agentIds);
-                }
+                $managerAgentIds[] = Auth::id();
 
-                if ($user->hasPermission('view_own_shipments')) {
-                    return $query->where('user_id', $user->id);
-                }
-
-                // Optional: If they have no permission, return nothing
-                return $query->whereRaw('1 = 0');
+                $query->whereIn('user_id', $managerAgentIds);
+            })
+            ->when(Auth::user()->hasPermission('view_own_shipments'), function ($query) {
+                $query->where('user_id', Auth::id());
             })
             ->paginate(8);
+
+        dd($shipments);
 
         return view('admin.shipment.index', compact('shipments'));
     }
