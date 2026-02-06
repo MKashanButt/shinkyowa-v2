@@ -26,12 +26,6 @@ class PermissionSeeder extends Seeder
         $permission->role()->attach([1, 2, 3]);
 
         $permission = Permission::create([
-            'name' => 'reserve_vehicle',
-        ]);
-
-        $permission->role()->attach([1, 2, 3]);
-
-        $permission = Permission::create([
             'name' => 'view_shipment',
         ]);
 
@@ -63,6 +57,12 @@ class PermissionSeeder extends Seeder
 
         // Agent Only Permission
         $permission = Permission::create([
+            'name' => 'view_own_payments',
+        ]);
+
+        $permission->role()->attach([3]);
+
+        $permission = Permission::create([
             'name' => 'view_own_customers',
         ]);
 
@@ -82,6 +82,12 @@ class PermissionSeeder extends Seeder
 
 
         // Admin & Manager Only Permissions
+        $permission = Permission::create([
+            'name' => 'edit_reserve_vehicle',
+        ]);
+
+        $permission->role()->attach([1, 2]);
+
         $permission = Permission::create([
             'name' => 'add_shipment',
         ]);
@@ -162,6 +168,10 @@ class PermissionSeeder extends Seeder
         $permission->role()->attach([2]);
 
         // Admin Only Permissions
+        $permission = Permission::create([
+            'name' => 'delete_reserve_vehicle',
+        ]);
+
         $permission = Permission::create([
             'name' => 'view_notifications',
         ]);
