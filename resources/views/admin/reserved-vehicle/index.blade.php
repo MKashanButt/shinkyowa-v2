@@ -59,40 +59,44 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-xs">
                                 <div class="grid grid-cols-2 gap-2">
-                                    @if (Auth::user()->hasPermission('reserve_vehicle'))
-                                        <a href="{{ route('reserved-vehicle.edit', $data) }}">
-                                            <x-primary-button>Edit</x-primary-button>
-                                        </a>
-                                        <form action="{{ route('reserved-vehicle.destroy', $data) }}" method="POST"
-                                            x-data="{ open: false }">
-                                            @method('DELETE')
-                                            @csrf
+                                    @if (Auth::user()->hasPermission('edit_reserve_vehicle') && Auth::user()->hasPermission('delete_reserve_vehicle'))
+                                        @if (Auth::user()->hasPermission('edit_reserve_vehicle'))
+                                            <a href="{{ route('reserved-vehicle.edit', $data) }}">
+                                                <x-primary-button>Edit</x-primary-button>
+                                            </a>
+                                        @endif
+                                        @if (Auth::user()->hasPermission('delete_reserve_vehicle'))
+                                            <form action="{{ route('reserved-vehicle.destroy', $data) }}" method="POST"
+                                                x-data="{ open: false }">
+                                                @method('DELETE')
+                                                @csrf
 
-                                            <!-- Delete Button - Triggers Modal -->
-                                            <x-danger-button type="button" x-on:click="open = true">
-                                                Delete
-                                            </x-danger-button>
+                                                <!-- Delete Button - Triggers Modal -->
+                                                <x-danger-button type="button" x-on:click="open = true">
+                                                    Delete
+                                                </x-danger-button>
 
-                                            <!-- Confirmation Modal -->
-                                            <div x-show="open" x-transition
-                                                class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-                                                x-cloak>
-                                                <div class="bg-white p-6 rounded-lg max-w-sm w-full">
-                                                    <p class="mb-4">Are you sure you want to delete this?
-                                                    </p>
-                                                    <div class="flex justify-end space-x-4">
-                                                        <button type="button" x-on:click="open = false"
-                                                            class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">
-                                                            Cancel
-                                                        </button>
-                                                        <button type="submit"
-                                                            class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">
-                                                            Confirm Delete
-                                                        </button>
+                                                <!-- Confirmation Modal -->
+                                                <div x-show="open" x-transition
+                                                    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+                                                    x-cloak>
+                                                    <div class="bg-white p-6 rounded-lg max-w-sm w-full">
+                                                        <p class="mb-4">Are you sure you want to delete this?
+                                                        </p>
+                                                        <div class="flex justify-end space-x-4">
+                                                            <button type="button" x-on:click="open = false"
+                                                                class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">
+                                                                Cancel
+                                                            </button>
+                                                            <button type="submit"
+                                                                class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">
+                                                                Confirm Delete
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        @endif
                                     @endif
                                 </div>
                             </td>
