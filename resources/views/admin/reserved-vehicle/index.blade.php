@@ -29,8 +29,10 @@
                             Customer</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
                             Company</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
-                            Actions</th>
+                        @if (Auth::user()->hasPermission('edit_reserve_vehicle') && Auth::user()->hasPermission('delete_reserve_vehicle'))
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
+                                Actions</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-[#e3e3e0]">
