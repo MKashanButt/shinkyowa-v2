@@ -28,6 +28,8 @@
                         <th class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
                             Customer</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
+                            Company</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] uppercase tracking-wider">
                             Actions</th>
                     </tr>
                 </thead>
@@ -51,6 +53,9 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-xs">
                                 {{ $data['customerAccount']->name }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-xs">
+                                {{ $data['customerAccount']->company }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-xs">
                                 <div class="grid grid-cols-2 gap-2">
