@@ -30,8 +30,6 @@ class ShipmentController extends Controller
             })
             ->paginate(8);
 
-        dd($shipments);
-
         return view('admin.shipment.index', compact('shipments'));
     }
 
