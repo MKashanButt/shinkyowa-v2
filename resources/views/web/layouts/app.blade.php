@@ -126,7 +126,7 @@
                 </div>
                 <div class="swiper-slide">
                     <a href="/filter?make=toyota&model=hilux&year=2024">
-                        <x-img src="{{ env('IMAGE_API_URL') . 'images/banner-two.png' }}" alt="slider-image" />
+                        <x-img src="{{ env('IMAGE_API_URL') . 'images/banner-two.webp' }}" alt="slider-image" />
                     </a>
                 </div>
                 <div class="swiper-slide">
