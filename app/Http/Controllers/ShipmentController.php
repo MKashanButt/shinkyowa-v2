@@ -14,7 +14,7 @@ class ShipmentController extends Controller
 {
     public function index()
     {
-        $shipments = Shipment::with(['stock.customer.agent'])
+        $shipments = Shipment::with('stock')
             ->when(Auth::user()->hasPermission('view_team_shipments'), function ($query) {
                 $managerAgentIds = User::where('manager_id', Auth::id())
                     ->whereHas('role', fn($r) => $r->where('name', 'agent'))
@@ -26,11 +26,11 @@ class ShipmentController extends Controller
                 $query->whereIn('user_id', $managerAgentIds);
             })
             ->when(Auth::user()->hasPermission('view_own_shipments'), function ($query) {
-                $query->whereHas('stock.customer', function ($q) {
-                    $q->where('user_id', Auth::id());
-                });
+                $query->where('user_id', Auth::id());
             })
             ->paginate(8);
+
+        // dd($shipments);
 
         return view('admin.shipment.index', compact('shipments'));
     }
