@@ -26,7 +26,11 @@ class ShipmentController extends Controller
                 $query->whereIn('user_id', $managerAgentIds);
             })
             ->when(Auth::user()->hasPermission('view_own_shipments'), function ($query) {
-                $query->where('user_id', Auth::id());
+                $query->whereHas('stock', function ($r) {
+                    $r->whereHas('customerAccount', function ($q) {
+                        $q->where('agent_id', Auth::id());
+                    });
+                });
             })
             ->paginate(8);
 
