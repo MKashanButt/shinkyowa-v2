@@ -3,7 +3,7 @@
         <x-breadcrumbs :page="'Vehicles'" :subpage="'Reserved'" />
         <x-header>
             {{ __('Reserved') }}
-            @if (Auth::user()->hasPermission('reserve_vehicle'))
+            @if (Auth::user()->hasPermission('can_reserve_vehicle'))
                 <a href="{{ route('reserved-vehicle.create') }}">
                     <x-primary-button>Reserve</x-primary-button>
                 </a>
