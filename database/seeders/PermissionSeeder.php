@@ -78,10 +78,16 @@ class PermissionSeeder extends Seeder
             'name' => 'view_own_shipments',
         ]);
 
-        $permission->role()->attach([1]);
+        $permission->role()->attach([3]);
 
 
         // Admin & Manager Only Permissions
+        $permission = Permission::create([
+            'name' => 'can_reserve_vehicle',
+        ]);
+
+        $permission->role()->attach([1, 2]);
+        
         $permission = Permission::create([
             'name' => 'edit_reserve_vehicle',
         ]);
