@@ -45,7 +45,7 @@
     @if (
             Auth::user()->hasPermission('add_customer')
             || Auth::user()->hasPermission('add_payment')
-            || Auth::user()->hasPermission('reserve_vehicle')
+            || Auth::user()->hasPermission('can_reserve_vehicle')
         )
         <div class="w-[45%] h-full flex flex-col gap-2">
             <h3 class="text-white text-xl font-bold uppercase">Actions</h3>
@@ -61,7 +61,7 @@
                         Add Payment
                     </a>
                 @endif
-                @if (Auth::user()->hasPermission('reserve_vehicle'))
+                @if (Auth::user()->hasPermission('can_reserve_vehicle'))
                     <a href="{{ route('reserved-vehicle.create') }}" class="w-1/3 rounded-md bg-white py-3">
                         Add Vehicle
                     </a>
