@@ -112,7 +112,7 @@
                         <dt class="w-[32%] font-semibold">Remaining Balance</dt>
                         <dd
                             class="w-4/5 {{ $customerAccount->buying > $customerAccount->deposit ? 'text-red-700' : 'text-green-700' }}">
-                            {{ number_format($customerAccount->buying - $customerAccount->deposit, 2) . ' ' . $customerAccount->currency->code ?? '$' }}
+                            {{ number_format($customerAccount->deposit - $customerAccount->buying, 2) . ' ' . $customerAccount->currency->code ?? '$' }}
                         </dd>
                     </div>
                 </dl>
