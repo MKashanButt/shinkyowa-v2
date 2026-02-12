@@ -273,8 +273,6 @@ class CustomerAccountController extends Controller
         }
 
         DB::transaction(function () use ($customerAccount) {
-            $customerAccount->stock()->delete();
-            $customerAccount->payment()->delete();
             $customerAccount->delete();
 
             $user = User::where('email', $customerAccount->email)->first();
