@@ -61,4 +61,17 @@
             <a href="/filter?category=commercial"><button>View All</button></a>
         @endisset
     </div>
+    <div class="tabs flex">
+        <div class="option">
+            <p>All Vehicle</p>
+        </div>
+    </div>
+    <div class="budget-vehicle">
+        @isset ($data['All'])
+            @foreach ($data['All'] as $item)
+                <x-home-vehicle-card :data="$item" />
+            @endforeach
+            <a href="/filter?category=all"><button>View All</button></a>
+        @endisset
+    </div>
 </x-web-layout>
