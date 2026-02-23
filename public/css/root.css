@@ -30,12 +30,12 @@
 }
 
 .container {
-    width: 90%;
+    width: 97%;
     margin: auto;
 }
 
 aside {
-    width: 22%;
+    width: 17%;
 }
 
 .focus {
@@ -63,14 +63,14 @@ button {
 }
 
 .content {
-    width: 90%;
+    width: 97%;
     margin: 10px auto;
     display: flex;
     gap: 10px;
 }
 
 .pageContent {
-    width: 78%;
+    width: 83%;
 }
 
 .sub-content {
@@ -78,11 +78,11 @@ button {
 }
 
 .content-divide {
-    width: 70%;
+    width: 75%;
 }
 
 .second-sidebar {
-    width: 30%;
+    width: 25%;
 }
 
 .w-100 {
