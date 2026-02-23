@@ -19,7 +19,7 @@ class HomeController extends Controller
         });
 
         $data = $groupedStocks->map(function ($group) {
-            return $group->take(8);
+            return $group->take(15);
         });
 
         return view('web.index', compact('data'));
