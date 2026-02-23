@@ -63,6 +63,10 @@
     margin-top: 5px;
 }
 
+.pageContent .sub-content .budget-vehicle .item h4 .pill {
+    font-size: 10px;
+}
+
 .pageContent .sub-content .budget-vehicle>a>button {
     position: absolute;
     padding: 1% 5%;
