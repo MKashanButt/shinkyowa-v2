@@ -1,5 +1,5 @@
 #slider {
-    width: 90%;
+    width: 97%;
     height: 200px;
     margin: auto;
 }
@@ -33,6 +33,7 @@
 
 .pageContent .sub-content .budget-vehicle {
     display: flex;
+    /* justify-content: space-between; */
     flex-wrap: wrap;
     gap: 20px;
     margin: 10px 0;
@@ -40,7 +41,7 @@
 }
 
 .pageContent .sub-content .budget-vehicle .item {
-    width: 22.5%;
+    width: calc(100% * (1/5) - 20px);
     height: auto;
     display: flex;
     flex-direction: column;
