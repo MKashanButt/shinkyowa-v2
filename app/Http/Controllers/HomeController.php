@@ -12,15 +12,33 @@ class HomeController extends Controller
     {
         $allStocks = Stock::with('make', 'bodyType', 'category', 'currency', 'country')
             ->orderBy('id', 'DESC')
+            ->limit(15)
             ->get();
 
-        $groupedStocks = $allStocks->groupBy(function ($stock) {
-            return trim($stock->category->name ?? 'Uncategorized');
-        });
+        $newArrival = Stock::with('make', 'bodyType', 'category', 'currency', 'country')
+            ->whereHas('category', fn($r) => $r->where('name', 'New Arrival'))
+            ->orderBy('id', 'DESC')
+            ->limit(15)
+            ->get();
 
-        $data = $groupedStocks->map(function ($group) {
-            return $group->take(15);
-        });
+        $discounted = Stock::with('make', 'bodyType', 'category', 'currency', 'country')
+            ->whereHas('category', fn($r) => $r->where('name', 'Discounted'))
+            ->orderBy('id', 'DESC')
+            ->limit(15)
+            ->get();
+
+        $commercial = Stock::with('make', 'bodyType', 'category', 'currency', 'country')
+            ->whereHas('category', fn($r) => $r->where('name', 'Commercial'))
+            ->orderBy('id', 'DESC')
+            ->limit(15)
+            ->get();
+
+        $data = [
+            "New Arrival" => $newArrival,
+            "Discounted" => $discounted,
+            "Commercial" => $commercial,
+            "All" => $allStocks
+        ];
 
         return view('web.index', compact('data'));
     }
