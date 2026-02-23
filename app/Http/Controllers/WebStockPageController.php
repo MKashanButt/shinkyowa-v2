@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\WebInquiryRequest;
 use App\Models\Stock;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -52,9 +53,13 @@ class WebStockPageController extends Controller
             $query->where('sid', $stock);
         }
         if ($category) {
-            $query->whereHas('category', function ($r) use ($category) {
-                $r->where('name', $category);
-            });
+            if ($category !== 'all') {
+                $query->whereHas('category', function ($r) use ($category) {
+                    $r->where('name', $category);
+                });
+            }
+
+            $query->with('make', 'bodyType', 'category', 'currency', 'country');
         }
         if ($fueltype) {
             $query->where('fuel', $fueltype);
@@ -178,5 +183,12 @@ class WebStockPageController extends Controller
         $result = Stock::where('model', $model)->orderBy('year', 'ASC')->distinct()->pluck('year');
 
         return response()->json($result);
+    }
+
+    public function storeInquiry(WebInquiryRequest $request)
+    {
+        $validated = $request->validated();
+
+        dd($validated);
     }
 }
