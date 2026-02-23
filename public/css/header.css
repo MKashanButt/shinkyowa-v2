@@ -50,7 +50,7 @@ header .main-header .logo img {
 }
 
 header .main-header .search {
-    width: 60%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -84,14 +84,14 @@ header .main-header .search button {
 }
 
 header .main-header .options {
-    width: 5%;
+    width: 15%;
     margin: auto;
     color: white;
     font-weight: bold;
+    justify-content: end;
 }
 
 header .main-header .options .item {
-    width: 33%;
     align-items: center;
     justify-content: center;
     cursor: pointer;
