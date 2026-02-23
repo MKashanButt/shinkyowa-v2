@@ -6,6 +6,7 @@
     <a href="/vehicle-info/{{ $data['id'] }}">
         <img src="{{ env('STOCK_IMG_LINK') . $data['thumbnail'] }}" alt="stock-image" loading="lazy">
         <h4>{{ strtoupper($data['make']['name']) }} {{ strtoupper($data['model']) }}
+            <br />
             <span class="pill">(SKI-{{ $data['sid'] }})</span>
         </h4>
         @if ($data['fob'] == 0)
