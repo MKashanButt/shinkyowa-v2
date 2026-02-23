@@ -66,6 +66,7 @@
 
 .pageContent .sub-content .budget-vehicle .item h4 .pill {
     font-size: 10px;
+    color: var(--secondary-color);
 }
 
 .pageContent .sub-content .budget-vehicle>a>button {
