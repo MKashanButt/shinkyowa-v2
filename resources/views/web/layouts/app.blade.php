@@ -131,7 +131,7 @@
                 </div>
                 <div class="swiper-slide">
                     <a href="/filter?make=honda&model=crv">
-                        <x-img src="{{ env('IMAGE_API_URL') . 'images/banner-three.png' }}" alt="slider-image" />
+                        <x-img src="{{ env('IMAGE_API_URL') . 'images/banner-three.webp' }}" alt="slider-image" />
                     </a>
                 </div>
             </div>
