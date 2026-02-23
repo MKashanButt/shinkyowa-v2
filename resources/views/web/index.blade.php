@@ -30,8 +30,7 @@
     <div class="budget-vehicle">
         @isset ($data['New Arrival'])
             @foreach ($data['New Arrival'] as $item)
-                <x-home-vehicle-card :img="$item['thumbnail']" :id="$item['id']" :make="$item['make']['name']"
-                    :model="$item['model']" :fob="$item['fob']" :currency="$item['currency']['symbol']" />
+                <x-home-vehicle-card :data="$item" />
             @endforeach
             <a href="/filter?category=new arrival"><button>View All</button></a>
         @endisset
@@ -44,8 +43,7 @@
     <div class="budget-vehicle">
         @isset ($data['Discounted'])
             @foreach ($data['Discounted'] as $item)
-                <x-home-vehicle-card :img="$item['thumbnail']" :id="$item['id']" :make="$item['make']['name']"
-                    :model="$item['model']" :fob="$item['fob']" :currency="$item['currency']['symbol']" />
+                <x-home-vehicle-card :data="$item" />
             @endforeach
             <a href="/filter?category=discounted"><button>View All</button></a>
         @endisset
@@ -58,8 +56,7 @@
     <div class="budget-vehicle">
         @isset ($data['Commercial'])
             @foreach ($data['Commercial'] as $item)
-                <x-home-vehicle-card :img="$item['thumbnail']" :id="$item['id']" :make="$item['make']['name']"
-                    :model="$item['model']" :fob="$item['fob']" :currency="$item['currency']['symbol']" />
+                <x-home-vehicle-card :data="$item" />
             @endforeach
             <a href="/filter?category=commercial"><button>View All</button></a>
         @endisset
