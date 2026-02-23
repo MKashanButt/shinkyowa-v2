@@ -31,7 +31,7 @@
         <tbody>
             <tr>
                 <th>Company Name</th>
-                <td>SHINKYOWA Internation Co. Ltd</td>
+                <td>SHINKYOWA International Co. Ltd</td>
             </tr>
             <tr>
                 <th>Head Office</th>
