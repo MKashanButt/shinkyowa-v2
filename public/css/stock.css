@@ -103,11 +103,11 @@
 }
 
 .pageContent .sub-content .item img {
-    width: 30%;
+    width: 20%;
 }
 
 .pageContent .sub-content .item .content {
-    width: 52%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -119,6 +119,20 @@
     flex-wrap: wrap;
     font-size: 14px;
     gap: 5px;
+}
+
+.pageContent .sub-content .item .content .features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pageContent .sub-content .item .content .features>div {
+    display: flex;
+    padding: 5px;
+    background-color: var(--secondary-color);
+    color: white;
+    font-size: 10px;
 }
 
 .pageContent .sub-content .item .content .text p {
@@ -133,9 +147,10 @@
 }
 
 .pageContent .sub-content .item .action {
-    width: 18%;
+    width: 10%;
     display: flex;
     align-items: center;
+    justify-content: end;
 }
 
 .pageContent .sub-content .item .action button {
