@@ -11,6 +11,15 @@
                 <p>Doors: <span>{{ $doors }}</span></p>
                 <p>Transmission: <span>{{ $transmission }}</span></p>
             </div>
+            <h3>Features:</h3>
+            <div class="features">
+                @foreach (json_decode($features, true) ?? [] as $feature)
+                    @break($loop->index == 10)
+                    <div>
+                        <p>{{ strtoupper(str_replace('_', ' ', $feature)) }}</p>
+                    </div>
+                @endforeach
+            </div>
         </div>
         <div class="action">
             <button>Get Quote</button>
