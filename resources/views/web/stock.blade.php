@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/stock.css') }}">
 @endpush
 
-<x-web-layout :title="$title" :sidebar="true">
+<x-web-layout :title="$title" :sidebar="false">
     <div class="filter">
         <h2>Filter Results</h2>
         <form action="/filter" method="get">
@@ -98,7 +98,8 @@
         @foreach ($vehicles as $item)
             <x-vehicle-listing-card :img="$item['thumbnail']" :id="$item['id']" :stockId="$item['sid']"
                 :make="$item['make']['name']" :model="$item['model']" :year="$item['year']" :mileage="$item['mileage']"
-                :chassis="$item['chassis']" :doors="$item['doors']" :transmission="$item['transmission']" />
+                :chassis="$item['chassis']" :doors="$item['doors']" :transmission="$item['transmission']"
+                :features="$item['features']" />
         @endforeach
     </div>
     <div class="pagination">
