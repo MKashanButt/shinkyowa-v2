@@ -142,7 +142,7 @@
         @if (strpos(Request::path(), 'vehicle-info/') !== 0)
             <x-main-sidebar :make="$allmake" :count="$count" :country="$country" />
         @endif
-        <div class="pageContent {{ $sidebar ? 'flex' : 'w-100' }}" style="gap: 10px">
+        <div class="pageContent flex" style="gap: 10px">
             <div class="sub-content {{ $sidebar ? 'content-divide' : '' }}">
                 {{ $slot }}
             </div>
