@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\BodyType;
+use App\Models\Country;
 use App\Models\Make;
 use App\Models\Stock;
 use Illuminate\Support\Facades\View;
@@ -25,7 +27,9 @@ class FilterOptionsProvider extends ServiceProvider
         $filterOptions = [
             'make' => Make::distinct()->get(),
             'model' => Stock::select('model')->distinct()->get(),
+            'bodytype' => BodyType::select('name')->get(),
             'year' => Stock::select('year')->distinct()->orderBy('year', 'ASC')->get(),
+            'country' => Country::select('name')->distinct()->get(),
         ];
 
         View::composer('*', function ($view) use ($filterOptions) {
