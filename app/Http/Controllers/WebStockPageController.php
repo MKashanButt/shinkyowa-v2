@@ -12,7 +12,7 @@ class WebStockPageController extends Controller
     public function index()
     {
         $queryParams = request()->except('page');
-        $vehicles = Stock::orderBy('id', 'desc')
+        $vehicles = Stock::with('make', 'bodyType', 'category', 'currency', 'country')->orderBy('id', 'desc')
             ->paginate(8)
             ->appends($queryParams);
 
