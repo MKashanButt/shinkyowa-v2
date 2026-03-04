@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="action">
-            <p>{{ $symbol }}{{ $fob }} {{ $code }}</p>
+            <p>{{ $symbol }}{{ number_format($fob) }} {{ $code }}</p>
             <button>Get Quote</button>
         </div>
     </div>
