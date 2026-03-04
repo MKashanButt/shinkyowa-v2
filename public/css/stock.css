@@ -176,8 +176,19 @@
 .pageContent .sub-content .item .action {
     width: 10%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: end;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pageContent .sub-content .item .action p {
+    padding: 5% 18%;
+    border: 1px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
 }
 
 .pageContent .sub-content .item .action button {
