@@ -22,6 +22,7 @@
             </div>
         </div>
         <div class="action">
+            <p>{{ $symbol }}{{ $fob }} {{ $code }}</p>
             <button>Get Quote</button>
         </div>
     </div>
