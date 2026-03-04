@@ -20,6 +20,7 @@ use App\Http\Controllers\ShipmentController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\StockRenderController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WebAjaxController;
 use App\Http\Controllers\WebStockPageController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,10 @@ Route::controller(WebStockPageController::class)->group(function () {
 
     Route::get('/stock-search', 'search');
 
+    Route::get('/send-email', 'storeInquiry');
+});
+
+Route::controller(WebAjaxController::class)->group(function () {
     Route::get('/get-models', 'getModels');
     Route::get('/get-fueltype', 'getFueltype');
     Route::get('/get-years', 'getYears');
