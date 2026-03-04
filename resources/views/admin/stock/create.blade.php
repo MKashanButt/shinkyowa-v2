@@ -150,9 +150,6 @@
                             <option value="petrol" {{ old('fuel') == 'petrol' ? 'selected' : '' }}>
                                 {{ __('Petrol') }}
                             </option>
-                            <option value="gasoline" {{ old('fuel') == 'gasoline' ? 'selected' : '' }}>
-                                {{ __('Gasoline') }}
-                            </option>
                             <option value="electric" {{ old('fuel') == 'electric' ? 'selected' : '' }}>
                                 {{ __('Electric') }}
                             </option>
