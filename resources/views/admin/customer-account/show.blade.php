@@ -1,14 +1,4 @@
 <x-admin-layout>
-    @if (Auth::check() && Auth::user()->hasRole('customer'))
-        <div class="absolute w-[77%] mx-10 top-0 flex items-center justify-center">
-            <button class="unset bg-blue-900 text-white font-bold p-2 rounded-br-lg rounded-bl-lg">
-                <p class="text-2xl uppercase">Welcome To</p>
-                <a href="/" target="__blank">
-                    <x-img src="/logo.png" alt="company logo" class="w-80" />
-                </a>
-            </button>
-        </div>
-    @endif
     <section>
         <x-breadcrumbs :page="'Customer Account'" :subpage="'Details'" />
         <div class="flex px-2 py-4 items-center justify-between">
@@ -333,7 +323,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-xs">
                                         <span
                                             class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        {{ $payment->status == 'approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            {{ $payment->status == 'approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
                                             {{ ucfirst($payment->status) }}
                                         </span>
                                     </td>
