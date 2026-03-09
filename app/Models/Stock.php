@@ -33,6 +33,10 @@ class Stock extends Model
         'agent_id',
     ];
 
+    protected $casts = [
+        'images' => 'array',
+    ];
+
     public function make(): BelongsTo
     {
         return $this->belongsTo(Make::class);
@@ -86,5 +90,10 @@ class Stock extends Model
     public function getDepositAttribute()
     {
         return $this->payment->sum('amount');
+    }
+
+    public function inquiry(): HasMany
+    {
+        return $this->hasMany(Inquiry::class);
     }
 }
