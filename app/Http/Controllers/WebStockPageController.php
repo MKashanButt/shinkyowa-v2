@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\WebInquiryRequest;
+use App\Models\Inquiry;
 use App\Models\Stock;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -21,8 +22,15 @@ class WebStockPageController extends Controller
 
     public function show($id)
     {
+        $ip = Inquiry::where('stock_id', $id)
+            ->where('ip', request()->getClientIp())
+            ->exists();
+        $msg = null;
+        if ($ip) {
+            $msg = 'Inquiry Already Submitted, Please wait for reply';
+        }
         $vehicle = Stock::with('make', 'bodyType', 'category', 'currency', 'country')->findOrFail($id);
-        return view('web.vehicle-info', compact('vehicle'));
+        return view('web.vehicle-info', compact('vehicle', 'msg'));
     }
 
     public function filter(Request $request)
@@ -185,6 +193,11 @@ class WebStockPageController extends Controller
     {
         $validated = $request->validated();
 
-        dd($validated);
+        Inquiry::create([
+            ...$validated,
+            "ip" => $request->getClientIp(),
+        ]);
+
+        return back()->with('success', 'Inquiry Sent. Please wait till our agent get in touch with you');
     }
 }
