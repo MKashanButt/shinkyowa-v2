@@ -210,7 +210,7 @@ dialog .message>button {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 0;
+    padding: 10px;
     background-color: var(--secondary-color);
     text-transform: uppercase;
     font-size: 12px;
@@ -220,5 +220,6 @@ dialog .message>button {
 
 .success {
     background-color: var(--success);
-    color: var(--black);
+    color: white;
+    letter-spacing: 1px;
 }
