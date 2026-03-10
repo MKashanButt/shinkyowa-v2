@@ -209,6 +209,11 @@
             </div>
         </div>
     </div>
+    <h1 class="related-vehicle-heading">Other Vehicles</h1>
+    <div class="related-vehicle">
+        @foreach ($relatedStock as $item)
+            <x-home-vehicle-card :data="$item" />
+        @endforeach
     </div>
     <section class="modal">
         <div class="container">
@@ -239,3 +244,18 @@
         }
     </script>
 </x-web-layout>
+
+@push('js')
+    <script>
+        var swiper = new Swiper(".relatedVehicleSwiper", {
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+        });
+    </script>
+@endpush
