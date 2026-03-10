@@ -112,7 +112,7 @@
                         <x-input-label for="color"
                             class="w-[32%] after:content-['*'] after:text-red-500">Color</x-input-label>
                         <x-text-input type="text" id="color" name="color" class="w-4/5"
-                            value="{{ old('stock', $stock['stock']) }}" required />
+                            value="{{ old('color', $stock['color']) }}" required />
                         <x-input-error :messages="$errors->get('color')" class="mt-2" />
                     </div>
                 </div>
