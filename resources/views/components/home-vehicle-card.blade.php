@@ -10,7 +10,7 @@
         @if ($data['fob'] == 0)
             <button class="primary">Inquiry</button>
         @else
-            <p>{{ $data['currency']['symbol'] }} <span>{{ number_format($data['fob']) }}</span></p>
+            <p>{{ $data['currency']['symbol'] }}<span>{{ number_format($data['fob']) }}</span></p>
         @endif
     </a>
 </div>
