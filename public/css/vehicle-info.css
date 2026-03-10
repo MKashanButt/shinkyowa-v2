@@ -274,7 +274,7 @@
 }
 
 .mySwiper1 .swiper-slide {
-    width: 22% !important;
+    width: calc(100% * (1/4) - 20px) !important;
     height: 100%;
     opacity: 0.4;
     user-select: none;
