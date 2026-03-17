@@ -25,7 +25,7 @@ class PendingTTCount extends ServiceProvider
     public function boot(): void
     {
         if (Schema::hasTable('payments')) {
-            $ttcount = Payment::where('status', 'not approved')
+            $ttcount = Payment::where('status', false)
                 ->count();
 
             View::composer('*', function ($view) use ($ttcount) {
