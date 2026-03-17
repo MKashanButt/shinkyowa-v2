@@ -29,7 +29,7 @@
                     <div class="col-span-2">
                         <h3 class="font-medium text-gray-700 mb-2">Gallery</h3>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                            @foreach (json_decode($stock['images']) as $image)
+                            @foreach ($stock['images'] as $image)
                                 <div class="border rounded-lg overflow-hidden">
                                     <img src="{{ asset('storage/' . $image) }}" alt="Vehicle Image"
                                         class="w-full h-32 object-cover">
