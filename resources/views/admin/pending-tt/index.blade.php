@@ -35,8 +35,8 @@
                             <td class="px-6 py-4 whitespace-nowrap text-xs">{{ Str::limit($data['description'], 10) }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-xs">{{ $data['payment_date'] }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-xs">{{ $data['amount'] }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-xs">{{ $data['in_yen'] }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-xs">{{ number_format($data['amount']) }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-xs">{{ number_format($data['in_yen']) }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-xs">{{ $data['customerAccount']->name }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-xs">{{ $data['user']->name }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-xs">
