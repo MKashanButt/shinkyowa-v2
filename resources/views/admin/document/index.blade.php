@@ -47,7 +47,9 @@
                                 {{ str_pad($sno + $key + 1, 2, '0', STR_PAD_LEFT) }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-xs">
-                                {{ 'SKI-' . $data['stock']->sid }}
+                                <a href="{{ route('stock.show', $data['stock']->sid) }}">
+                                    {{ 'SKI-' . $data['stock']->sid }}
+                                </a>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-xs">
                                 @if ($data['japanese_export'])
