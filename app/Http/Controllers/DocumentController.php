@@ -70,7 +70,9 @@ class DocumentController extends Controller
 
         foreach (['japanese_export', 'english_export', 'final_invoice', 'inspection_certificate', 'bl_copy'] as $field) {
             if ($request->hasFile($field)) {
-                Storage::disk('public')->delete($document->$field);
+                if (!empty($document->$field)) {
+                    Storage::disk('public')->delete($document->$field);
+                }
                 $validated[$field] = $request->file($field)->store('documents', 'public');
             } else {
                 unset($validated[$field]);
