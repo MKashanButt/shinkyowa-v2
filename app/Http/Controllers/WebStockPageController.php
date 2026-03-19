@@ -174,7 +174,8 @@ class WebStockPageController extends Controller
             $query->where(function ($q) use ($word) {
                 $q->whereHas('make', fn($m) => $m->where('name', 'LIKE', "%{$word}%"))
                     ->orWhere('model', 'LIKE', "%{$word}%")
-                    ->orWhere('year', 'LIKE', "%{$word}%");
+                    ->orWhere('year', 'LIKE', "%{$word}%")
+                    ->orWhere('chassis', 'LIKE', "%{$word}%");
             });
 
             $vehicles = $query->orderBy('id', 'desc')->paginate(8);
@@ -184,7 +185,7 @@ class WebStockPageController extends Controller
 
         $query->select('stocks.*') // important to avoid ambiguous column names
             ->join('makes', 'stocks.make_id', '=', 'makes.id')
-            ->whereRaw("CONCAT_WS(' ', makes.name, stocks.model, stocks.year) LIKE ?", ["%{$search}%"])
+            ->whereRaw("CONCAT_WS(' ', makes.name, stocks.model, stocks.year, stocks.chassis) LIKE ?", ["%{$search}%"])
             ->orderBy('stocks.id', 'desc')
             ->paginate(8)
             ->appends(request()->query());
